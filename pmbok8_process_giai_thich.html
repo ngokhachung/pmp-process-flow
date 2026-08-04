@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PMBOK 8 — Giải thích 40 quy trình</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14161c;
+    --paper:#f7f6f2;
+    --line:#d9d6cd;
+    --muted:#6c6a63;
+    --warn:#b03a2e;  --warn-bg:#fbeae7;
+
+    --gov:#6b4ba8;   --gov-bg:#ede6f7;
+    --sco:#2e4a8b;   --sco-bg:#e3e8f6;
+    --sch:#0596b8;   --sch-bg:#daf0f6;
+    --fin:#2e9e5b;   --fin-bg:#e0f1e7;
+    --stk:#a0459e;   --stk-bg:#f4e4f2;
+    --res:#c86f83;   --res-bg:#f8e8ec;
+    --rsk:#d19a1f;   --rsk-bg:#faf1d5;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;padding:0;background:var(--paper);color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1000px;margin:0 auto;padding:28px 20px 60px;}
+
+  header.top{border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:18px;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+  h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(22px,4vw,34px);
+    line-height:1.05;margin:0 0 6px;letter-spacing:-.01em;}
+  .sub{font-size:13.5px;color:var(--muted);max-width:68ch;line-height:1.55;}
+
+  /* ---- nav ---- */
+  nav.jump{position:sticky;top:0;z-index:20;background:var(--paper);
+    border-bottom:1px solid var(--line);padding:9px 0;margin-bottom:22px;
+    display:flex;flex-wrap:wrap;gap:5px 7px;}
+  nav.jump a{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;
+    text-decoration:none;color:var(--ink);background:#fff;border:1px solid var(--line);
+    border-radius:20px;padding:3px 10px;letter-spacing:.02em;}
+  nav.jump a:hover{background:var(--ink);color:#fff;border-color:var(--ink);}
+  nav.jump a.g1{border-left:3px solid var(--gov);} nav.jump a.g2{border-left:3px solid var(--sco);}
+  nav.jump a.g3{border-left:3px solid var(--sch);} nav.jump a.g4{border-left:3px solid var(--fin);}
+  nav.jump a.g5{border-left:3px solid var(--stk);} nav.jump a.g6{border-left:3px solid var(--res);}
+  nav.jump a.g7{border-left:3px solid var(--rsk);}
+
+  /* ---- warning ---- */
+  .alert{border:1px solid var(--warn);border-left:4px solid var(--warn);background:var(--warn-bg);
+    border-radius:9px;padding:14px 17px;margin-bottom:26px;}
+  .alert h2{font-family:'Space Grotesk',sans-serif;font-size:13.5px;font-weight:700;margin:0 0 8px;
+    color:var(--warn);}
+  .alert p{font-size:13px;line-height:1.55;margin:0 0 8px;color:#33322d;}
+  .alert p:last-child{margin-bottom:0;}
+
+  /* ---- section headings ---- */
+  h2.sec{font-family:'Space Grotesk',sans-serif;font-size:clamp(17px,2.6vw,22px);font-weight:700;
+    margin:44px 0 4px;letter-spacing:-.01em;padding-top:10px;border-top:2px solid var(--ink);}
+  h2.sec .n{font-family:'IBM Plex Mono',monospace;color:var(--muted);font-size:14px;margin-right:8px;}
+  .secsub{font-size:13px;color:var(--muted);line-height:1.55;margin:0 0 18px;max-width:70ch;}
+
+  h3.dom{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;
+    margin:30px 0 3px;display:flex;align-items:center;gap:9px;flex-wrap:wrap;}
+  h3.dom .sq{width:13px;height:13px;border-radius:3px;flex:0 0 auto;}
+  h3.dom .cnt{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;
+    color:var(--muted);letter-spacing:.04em;}
+  .domnote{font-size:12.5px;color:var(--muted);line-height:1.5;margin:0 0 12px;max-width:70ch;}
+
+  /* ---- generic card ---- */
+  .card{border:1px solid var(--line);border-radius:10px;background:#fff;padding:15px 18px;
+    margin-bottom:12px;}
+  .card h4{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;margin:0 0 4px;}
+  .card h4 .en{color:var(--muted);font-weight:500;}
+  .card p{font-size:13px;line-height:1.55;color:#33322d;margin:0 0 8px;}
+  .card p:last-child{margin-bottom:0;}
+  .card ul{margin:0 0 8px;padding-left:19px;}
+  .card li{font-size:13px;line-height:1.55;color:#33322d;margin-bottom:5px;}
+
+  /* ---- focus-area cards ---- */
+  .fa{border:1px solid var(--line);border-left:4px solid var(--ink);border-radius:10px;
+    background:#fff;padding:14px 17px;margin-bottom:11px;}
+  .fa .hd{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:7px;}
+  .fa .nm{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;}
+  .fa .vn{font-size:13px;color:var(--muted);}
+  .fa .pill{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;
+    background:var(--ink);color:#fff;border-radius:20px;padding:2px 9px;letter-spacing:.03em;}
+  .fa .q{font-size:13px;line-height:1.55;font-style:italic;color:#33322d;margin:0 0 8px;}
+  .fa dl{margin:0;display:grid;grid-template-columns:104px 1fr;gap:4px 12px;}
+  @media(max-width:560px){.fa dl,.pr dl{grid-template-columns:1fr;gap:2px;}
+    .fa dt,.pr dt{margin-top:7px;}}
+  .fa dt,.pr dt{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;
+    letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:2px;}
+  .fa dd,.pr dd{margin:0;font-size:13px;line-height:1.55;color:#33322d;}
+
+  /* ---- process cards ---- */
+  .pr{border:1px solid var(--line);border-radius:10px;background:#fff;
+    padding:13px 16px;margin-bottom:10px;border-left:4px solid var(--line);}
+  .pr .hd{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:9px;}
+  .pr .code{font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;}
+  .pr .en{font-family:'Space Grotesk',sans-serif;font-size:14.5px;font-weight:700;
+    letter-spacing:-.005em;}
+  .pr .vn{font-size:12.5px;color:var(--muted);}
+  .pr .grp{margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;
+    letter-spacing:.05em;text-transform:uppercase;border:1px solid var(--line);
+    border-radius:20px;padding:2px 9px;color:var(--muted);white-space:nowrap;}
+  .pr dl{margin:0;display:grid;grid-template-columns:78px 1fr;gap:5px 12px;}
+  .pr dd.trap{color:#7a2b21;}
+  .pr dt.trap{color:var(--warn);}
+
+  .pr.d1{border-left-color:var(--gov);} .pr.d1 .code{color:var(--gov);}
+  .pr.d2{border-left-color:var(--sco);} .pr.d2 .code{color:var(--sco);}
+  .pr.d3{border-left-color:var(--sch);} .pr.d3 .code{color:var(--sch);}
+  .pr.d4{border-left-color:var(--fin);} .pr.d4 .code{color:var(--fin);}
+  .pr.d5{border-left-color:var(--stk);} .pr.d5 .code{color:var(--stk);}
+  .pr.d6{border-left-color:var(--res);} .pr.d6 .code{color:var(--res);}
+  .pr.d7{border-left-color:var(--rsk);} .pr.d7 .code{color:var(--rsk);}
+
+  /* ---- tables ---- */
+  .tscroll{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:#fff;
+    margin-bottom:16px;}
+  table{border-collapse:collapse;width:100%;min-width:520px;font-size:13px;}
+  th{background:var(--ink);color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:600;
+    font-size:12px;text-align:left;padding:9px 12px;}
+  td{border-top:1px solid var(--line);padding:8px 12px;line-height:1.5;vertical-align:top;}
+  td.mono{font-family:'IBM Plex Mono',monospace;font-size:12px;}
+
+  b.k{font-weight:600;}
+  code{font-family:'IBM Plex Mono',monospace;font-size:11.5px;background:#efeee8;
+    border:1px solid var(--line);border-radius:4px;padding:1px 5px;}
+
+  footer.foot{margin-top:40px;font-size:11.5px;color:var(--muted);line-height:1.6;
+    border-top:1px solid var(--line);padding-top:14px;}
+
+  @media print{
+    body{background:#fff;} nav.jump{display:none;} .wrap{max-width:none;padding:0;}
+    .pr,.fa,.card{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="eyebrow">PMBOK® Guide 8th Ed · Từ điển tra cứu</div>
+    <h1>40 quy trình — giải thích từng cái</h1>
+    <p class="sub">Trang đi kèm <b>pmbok8_process_matrix.html</b>. Bên đó là <i>bản đồ</i> — nhìn thấy vị trí. Trang này là <i>từ điển</i> — hiểu từng ô làm gì. Mọi thuật ngữ đều để nguyên tiếng Anh kèm nghĩa tiếng Việt trong ngoặc, vì đề thi PMP ra bằng tiếng Anh.</p>
+  </header>
+
+  <nav class="jump">
+    <a href="#s1">§1 · 5 nhóm</a>
+    <a href="#s2">§2 · 7 lĩnh vực</a>
+    <a href="#s3">§3 · 40 quy trình</a>
+    <a href="#g1" class="g1">1 Governance</a>
+    <a href="#g2" class="g2">2 Scope</a>
+    <a href="#g3" class="g3">3 Schedule</a>
+    <a href="#g4" class="g4">4 Finance</a>
+    <a href="#g5" class="g5">5 Stakeholders</a>
+    <a href="#g6" class="g6">6 Resources</a>
+    <a href="#g7" class="g7">7 Risk</a>
+  </nav>
+
+  <div class="alert">
+    <h2>⚠ Ba chữ "domain" khác nhau — đừng lẫn</h2>
+    <p><b>1. Performance Domains (lĩnh vực hiệu suất)</b> — <b>7</b> cái: Governance, Scope, Schedule, Finance, Stakeholders, Resources, Risk. Đây là <b>hàng</b> trong ma trận, thuộc <b>PMBOK 8</b>. Chính là "lĩnh vực" trong §2 dưới đây.</p>
+    <p><b>2. Domains của ECO 2026 (đề cương thi)</b> — chỉ <b>3</b> cái: People (33%), Process (41%), Business Environment (26%). Đây mới là thứ <b>quyết định đề thi</b>. PMBOK không phải đề cương thi.</p>
+    <p><b>3. Performance Domains của PMBOK 7</b> — <b>8</b> cái (Stakeholders, Team, Development Approach, Planning, Project Work, Delivery, Measurement, Uncertainty). Bản 7 đã bị bản 8 thay; gặp tài liệu nào còn dạy 8 cái này là tài liệu cũ.</p>
+  </div>
+
+  <!-- ═══════════════ §1 ═══════════════ -->
+  <h2 class="sec" id="s1"><span class="n">§1</span>Năm nhóm quy trình (Process Groups → Focus Areas)</h2>
+  <p class="secsub">Đây là <b>cột</b> của ma trận — trả lời câu hỏi <i>"việc này xảy ra ở giai đoạn nào của vòng đời?"</i>. PMBOK 8 đã <b>đổi tên</b>: cái mà PMBOK 6 gọi là <b>Process Groups</b> (nhóm quy trình) thì PMBOK 8 gọi là <b>Focus Areas</b> (vùng trọng tâm). Nội dung y hệt, chỉ khác nhãn — nhưng bạn cần nhận ra <i>cả hai</i> cách gọi vì tài liệu ôn thi đang lẫn lộn cả hai.</p>
+
+  <div class="fa">
+    <div class="hd"><span class="nm">Initiating</span><span class="vn">Khởi tạo</span><span class="pill">1 quy trình</span></div>
+    <p class="q">"Dự án này có được phép tồn tại không, và ai được trao quyền?"</p>
+    <dl>
+      <dt>Sản phẩm</dt><dd><b class="k">Project charter</b> (tôn chỉ dự án) — văn bản khai sinh, trao thẩm quyền chính thức cho Project Manager.</dd>
+      <dt>Động từ</dt><dd><code>Initiate…</code></dd>
+      <dt>Ghi nhớ</dt><dd>Nhỏ nhất nhưng không được bỏ qua. Chưa ký charter thì PM <b>chưa có quyền</b> tiêu tiền hay điều người.</dd>
+    </dl>
+  </div>
+
+  <div class="fa">
+    <div class="hd"><span class="nm">Planning</span><span class="vn">Lập kế hoạch</span><span class="pill">20 quy trình</span></div>
+    <p class="q">"Làm cái gì, bằng cách nào, hết bao lâu, tốn bao nhiêu, ai làm, rủi ro gì?"</p>
+    <dl>
+      <dt>Sản phẩm</dt><dd><b class="k">Project management plan</b> (kế hoạch quản lý dự án) và các <b class="k">baselines</b> (đường cơ sở: scope, schedule, cost) — thước đo để sau này so sánh.</dd>
+      <dt>Động từ</dt><dd><code>Plan…</code> <code>Define…</code> <code>Develop…</code> <code>Estimate…</code> <code>Elicit…</code> <code>Identify…</code></dd>
+      <dt>Ghi nhớ</dt><dd>Chiếm <b>một nửa</b> số quy trình (20/40) — cho thấy PMI coi trọng gì. Mỗi lĩnh vực đều mở đầu bằng một quy trình <code>Plan …Management</code>: lập kế hoạch <i>về cách lập kế hoạch</i>.</dd>
+    </dl>
+  </div>
+
+  <div class="fa">
+    <div class="hd"><span class="nm">Executing</span><span class="vn">Thực thi</span><span class="pill">8 quy trình</span></div>
+    <p class="q">"Làm ra sản phẩm thật, và dẫn dắt con người làm ra nó."</p>
+    <dl>
+      <dt>Sản phẩm</dt><dd><b class="k">Deliverables</b> (sản phẩm bàn giao) và <b class="k">work performance data</b> (dữ liệu hiệu suất thô).</dd>
+      <dt>Động từ</dt><dd><code>Manage…</code> <code>Acquire…</code> <code>Lead…</code> <code>Implement…</code></dd>
+      <dt>Ghi nhớ</dt><dd>Ít quy trình nhất trong 3 nhóm giữa, nhưng <b>ngốn nhiều tiền và thời gian nhất</b>. Đây cũng là nơi phần lớn câu hỏi tình huống về con người xảy ra.</dd>
+    </dl>
+  </div>
+
+  <div class="fa">
+    <div class="hd"><span class="nm">Monitoring and Controlling</span><span class="vn">Giám sát &amp; kiểm soát</span><span class="pill">10 quy trình</span></div>
+    <p class="q">"Thực tế có khớp kế hoạch không? Lệch rồi thì làm gì?"</p>
+    <dl>
+      <dt>Sản phẩm</dt><dd><b class="k">Work performance information/reports</b>, <b class="k">change requests</b> (yêu cầu thay đổi), <b class="k">forecasts</b> (dự báo).</dd>
+      <dt>Động từ</dt><dd><code>Monitor…</code> <code>Control…</code> <code>Validate…</code> <code>Assess…</code></dd>
+      <dt>Ghi nhớ</dt><dd>Không phải một <i>giai đoạn</i> — nó chạy <b>song song</b> từ đầu đến cuối dự án. Đề rất hay bẫy: câu nào bảo "sau khi Executing xong thì tới M&amp;C" là sai.</dd>
+    </dl>
+  </div>
+
+  <div class="fa">
+    <div class="hd"><span class="nm">Closing</span><span class="vn">Kết thúc</span><span class="pill">1 quy trình</span></div>
+    <p class="q">"Đóng sổ cho đúng thủ tục."</p>
+    <dl>
+      <dt>Sản phẩm</dt><dd><b class="k">Final report</b>, bàn giao sản phẩm, <b class="k">lessons learned repository</b> (kho bài học), giải phóng nguồn lực.</dd>
+      <dt>Động từ</dt><dd><code>Close…</code></dd>
+      <dt>Ghi nhớ</dt><dd>Phải làm <b>kể cả khi dự án bị huỷ giữa chừng</b> — đây là đáp án đúng rất hay bị bỏ qua.</dd>
+    </dl>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h4>Ba hiểu lầm kinh điển về 5 nhóm này</h4>
+    <ul>
+      <li><b>Nhóm ≠ giai đoạn (phase).</b> Một dự án chia làm 4 phase thì <i>mỗi phase</i> đều đi qua đủ cả 5 nhóm. Trong agile, mỗi <b class="k">sprint</b> cũng vậy.</li>
+      <li><b>Không chạy thẳng một chiều.</b> Planning ↔ Executing lặp đi lặp lại — gọi là <b class="k">progressive elaboration</b> (chi tiết hoá dần) và <b class="k">rolling wave planning</b> (lập kế hoạch cuốn chiếu): lập chi tiết cho phần gần, phác thảo cho phần xa.</li>
+      <li><b>Không chỉ dành cho predictive.</b> PMBOK 8 nói rõ 5 focus area áp dụng cho cả <b class="k">predictive</b> (tuần tự), <b class="k">adaptive/agile</b> (thích ứng) và <b class="k">hybrid</b> (lai) — chỉ khác ở nhịp độ và mức độ chi tiết.</li>
+    </ul>
+  </div>
+
+  <!-- ═══════════════ §2 ═══════════════ -->
+  <h2 class="sec" id="s2"><span class="n">§2</span>Bảy lĩnh vực (Performance Domains)</h2>
+  <p class="secsub">Đây là <b>hàng</b> của ma trận — trả lời câu hỏi <i>"việc này thuộc chuyên môn nào?"</i>. PMBOK 6 có <b>10 Knowledge Areas</b> (lĩnh vực kiến thức); PMBOK 8 gộp lại còn <b>7 Performance Domains</b>. Nếu bạn từng đọc tài liệu cũ, bảng gộp dưới đây là chìa khoá chuyển đổi.</p>
+
+  <div class="tscroll">
+    <table>
+      <thead><tr><th style="width:52%">PMBOK 6 — 10 Knowledge Areas</th><th>PMBOK 8 — 7 Performance Domains</th></tr></thead>
+      <tbody>
+        <tr><td>Integration + Quality + Procurement</td><td class="mono"><b>1 · Governance</b></td></tr>
+        <tr><td>Scope</td><td class="mono"><b>2 · Scope</b></td></tr>
+        <tr><td>Schedule</td><td class="mono"><b>3 · Schedule</b></td></tr>
+        <tr><td>Cost</td><td class="mono"><b>4 · Finance</b></td></tr>
+        <tr><td>Stakeholder + Communications</td><td class="mono"><b>5 · Stakeholders</b></td></tr>
+        <tr><td>Resource</td><td class="mono"><b>6 · Resources</b></td></tr>
+        <tr><td>Risk</td><td class="mono"><b>7 · Risk</b></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="secsub">Ba lĩnh vực bị gộp mất tên riêng — <b>Quality</b> (chất lượng), <b>Procurement</b> (mua sắm), <b>Communications</b> (giao tiếp) — <i>không</i> có nghĩa là chúng biến mất khỏi đề thi. Chúng nằm ẩn bên trong <code>1.3</code>, <code>1.5</code>, <code>5.3</code>, <code>5.5</code>. Đây là chỗ người ôn bằng tài liệu cũ hay hụt.</p>
+
+  <div class="fa" style="border-left-color:var(--gov)">
+    <div class="hd"><span class="nm" style="color:var(--gov)">1 · Governance</span><span class="vn">Quản trị dự án</span><span class="pill" style="background:var(--gov)">9 quy trình</span></div>
+    <dl>
+      <dt>Quản cái gì</dt><dd>Chất keo dính mọi thứ lại: khai sinh dự án, hợp nhất các kế hoạch con, chất lượng, mua sắm, tri thức, thay đổi, và đóng dự án.</dd>
+      <dt>Hình dạng</dt><dd>Lĩnh vực <b>duy nhất trải khắp cả 5 cột</b> — vì nó là lớp tích hợp (integration).</dd>
+      <dt>ECO 2026</dt><dd>Nặng về <b>Domain III — Business Environment</b> (governance, compliance, change).</dd>
+    </dl>
+  </div>
+
+  <div class="fa" style="border-left-color:var(--sco)">
+    <div class="hd"><span class="nm" style="color:var(--sco)">2 · Scope</span><span class="vn">Phạm vi</span><span class="pill" style="background:var(--sco)">6 quy trình</span></div>
+    <dl>
+      <dt>Quản cái gì</dt><dd>Ranh giới của dự án: làm gì, <b>không</b> làm gì, và ai xác nhận là đã làm xong.</dd>
+      <dt>Hình dạng</dt><dd>Chỉ có ở <b>Planning</b> và <b>M&amp;C</b>. Không có Initiating (lúc đó chưa đủ thông tin) và không có Executing (phạm vi không "được thực thi", nó chỉ định nghĩa việc cho lĩnh vực khác thực thi).</dd>
+      <dt>ECO 2026</dt><dd><b>Domain II — Process</b>.</dd>
+    </dl>
+  </div>
+
+  <div class="fa" style="border-left-color:var(--sch)">
+    <div class="hd"><span class="nm" style="color:var(--sch)">3 · Schedule</span><span class="vn">Tiến độ</span><span class="pill" style="background:var(--sch)">3 quy trình</span></div>
+    <dl>
+      <dt>Quản cái gì</dt><dd>Chiều thời gian: việc nào trước việc nào, mỗi việc bao lâu, tổng bao giờ xong.</dd>
+      <dt>Hình dạng</dt><dd>Gọn nhất — 3 quy trình. PMBOK 6 có 6 quy trình lịch trình, bản 8 nén 4 cái (define activities, sequence, estimate durations, develop schedule) vào <b>một</b> quy trình <code>3.2</code>.</dd>
+      <dt>ECO 2026</dt><dd><b>Domain II — Process</b>.</dd>
+    </dl>
+  </div>
+
+  <div class="fa" style="border-left-color:var(--fin)">
+    <div class="hd"><span class="nm" style="color:var(--fin)">4 · Finance</span><span class="vn">Tài chính</span><span class="pill" style="background:var(--fin)">4 quy trình</span></div>
+    <dl>
+      <dt>Quản cái gì</dt><dd>Tiền: ước lượng, gom thành ngân sách, rồi theo dõi tiêu.</dd>
+      <dt>Hình dạng</dt><dd>Giống hệt Schedule: chỉ Planning + M&amp;C. Đổi tên từ <b>Cost</b> (PMBOK 6) sang <b>Finance</b> — nhấn mạnh cả góc nhìn tài chính doanh nghiệp, không chỉ chi phí dự án.</dd>
+      <dt>ECO 2026</dt><dd><b>Domain II — Process</b>, nhưng phần <b class="k">business case</b> / <b class="k">benefits</b> nằm ở Domain III.</dd>
+    </dl>
+  </div>
+
+  <div class="fa" style="border-left-color:var(--stk)">
+    <div class="hd"><span class="nm" style="color:var(--stk)">5 · Stakeholders</span><span class="vn">Các bên liên quan</span><span class="pill" style="background:var(--stk)">7 quy trình</span></div>
+    <dl>
+      <dt>Quản cái gì</dt><dd>Con người <b>ngoài</b> nhóm dự án: ai bị ảnh hưởng, họ muốn gì, nói chuyện với họ ra sao.</dd>
+      <dt>Hình dạng</dt><dd>Trải 4 cột (thiếu Closing). Là lĩnh vực đông thứ hai vì đã <b>nuốt trọn Communications</b> của PMBOK 6 — cứ mỗi quy trình về stakeholder lại có một quy trình song sinh về communications.</dd>
+      <dt>ECO 2026</dt><dd><b>Domain I — People</b>.</dd>
+    </dl>
+  </div>
+
+  <div class="fa" style="border-left-color:var(--res)">
+    <div class="hd"><span class="nm" style="color:var(--res)">6 · Resources</span><span class="vn">Nguồn lực</span><span class="pill" style="background:var(--res)">5 quy trình</span></div>
+    <dl>
+      <dt>Quản cái gì</dt><dd>Cả <b>người</b> (team members) lẫn <b>vật</b> (thiết bị, vật tư, cơ sở vật chất) — hai thứ rất khác nhau nhưng chung một lĩnh vực.</dd>
+      <dt>Hình dạng</dt><dd>Planning → Executing → M&amp;C. Có mặt ở Executing vì <code>6.4 Lead the Team</code> là việc làm hằng ngày.</dd>
+      <dt>ECO 2026</dt><dd><b>Domain I — People</b> (phần con người) — nơi tập trung câu hỏi về lãnh đạo, xung đột, động lực.</dd>
+    </dl>
+  </div>
+
+  <div class="fa" style="border-left-color:var(--rsk)">
+    <div class="hd"><span class="nm" style="color:var(--rsk)">7 · Risk</span><span class="vn">Rủi ro</span><span class="pill" style="background:var(--rsk)">6 quy trình</span></div>
+    <dl>
+      <dt>Quản cái gì</dt><dd>Sự bất định — cả mặt xấu (<b class="k">threats</b> — nguy cơ) lẫn mặt tốt (<b class="k">opportunities</b> — cơ hội).</dd>
+      <dt>Hình dạng</dt><dd>4 quy trình dồn ở Planning — rủi ro là việc phải nghĩ <i>trước</i>. Rồi 1 Executing (thực thi ứng phó) + 1 M&amp;C (theo dõi).</dd>
+      <dt>ECO 2026</dt><dd>Đã <b>chuyển sang Domain III — Business Environment</b>. Đây là thay đổi lớn: rủi ro giờ được nhìn ở tầm doanh nghiệp, không còn là kỹ thuật thuần dự án.</dd>
+    </dl>
+  </div>
+
+  <!-- ═══════════════ §3 ═══════════════ -->
+  <h2 class="sec" id="s3"><span class="n">§3</span>Bốn mươi quy trình</h2>
+  <p class="secsub">Mỗi quy trình gồm ba dòng: <b>Mục đích</b> (nó tồn tại để làm gì), <b>Đầu ra</b> (nó sinh ra cái gì — đây là thứ nối các quy trình với nhau), và <b>⚠ Bẫy</b> (chỗ đề thi hay gài, hoặc điểm dễ nhầm với quy trình khác). Không liệt kê đầy đủ ITTO — ECO 2026 không hỏi thuộc lòng ITTO.</p>
+
+  <!-- ───── GOVERNANCE ───── -->
+  <h3 class="dom" id="g1"><span class="sq" style="background:var(--gov)"></span>1 · Governance <span class="cnt">Quản trị dự án · 9 quy trình</span></h3>
+  <p class="domnote">Đọc hàng này theo thứ tự là đọc được <b>toàn bộ vòng đời dự án</b> từ khai sinh đến khai tử. Nếu chỉ có thời gian học một lĩnh vực, học lĩnh vực này.</p>
+
+  <div class="pr d1">
+    <div class="hd"><span class="code">1.1</span><span class="en">Initiate Project or Phase</span><span class="vn">Khởi tạo dự án / giai đoạn</span><span class="grp">Initiating</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Chính thức cho phép dự án (hoặc một giai đoạn mới) tồn tại và trao thẩm quyền cho Project Manager.</dd>
+      <dt>Đầu ra</dt><dd><b class="k">Project charter</b> (tôn chỉ dự án), <b class="k">assumption log</b> (sổ giả định), danh sách stakeholder ban đầu.</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">Charter do <b>sponsor</b> (người bảo trợ) ký, không phải PM. PM có thể chấp bút nhưng không tự phê duyệt. Nguồn vào là <b class="k">business case</b> và <b class="k">benefits management plan</b> — hai thứ có <i>trước</i> dự án.</dd>
+    </dl>
+  </div>
+
+  <div class="pr d1">
+    <div class="hd"><span class="code">1.2</span><span class="en">Integrate and Align Project Plans</span><span class="vn">Tích hợp &amp; gióng hàng các kế hoạch</span><span class="grp">Planning</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Gộp tất cả kế hoạch con (scope, schedule, cost, risk…) thành <b>một</b> kế hoạch tổng nhất quán, không mâu thuẫn nhau.</dd>
+      <dt>Đầu ra</dt><dd><b class="k">Project management plan</b> — bao gồm cả 3 <b class="k">baselines</b>: scope, schedule, cost (gộp lại gọi là <b class="k">performance measurement baseline</b>).</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">Baseline một khi đã duyệt thì <b>chỉ đổi được qua <code>1.8</code></b> (change control). Câu hỏi kiểu "tiến độ trễ, PM nên cập nhật lại baseline chứ?" → sai, phải qua quy trình thay đổi.</dd>
+    </dl>
+  </div>
+
+  <div class="pr d1">
+    <div class="hd"><span class="code">1.3</span><span class="en">Plan Sourcing Strategy</span><span class="vn">Hoạch định chiến lược nguồn cung</span><span class="grp">Planning</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Quyết định cái gì tự làm, cái gì thuê ngoài; chọn nhà cung cấp và loại hợp đồng. Đây là phần <b>Procurement</b> (mua sắm) của PMBOK 6 nằm ẩn trong Governance.</dd>
+      <dt>Đầu ra</dt><dd><b class="k">Procurement management plan</b>, <b class="k">make-or-buy decisions</b> (quyết định tự làm hay mua), <b class="k">procurement statement of work</b> (SOW).</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">Thuộc 3 họ hợp đồng và <b>ai gánh rủi ro</b>: <b class="k">Fixed-price</b> (giá cố định — <i>seller</i> gánh rủi ro), <b class="k">Cost-reimbursable</b> (hoàn chi phí — <i>buyer</i> gánh), <b class="k">Time &amp; Material</b> (T&amp;M — chia đôi, hợp cho việc nhỏ/gấp). Yêu cầu càng mơ hồ càng phải nghiêng về cost-reimbursable hoặc T&amp;M.</dd>
+    </dl>
+  </div>
+
+  <div class="pr d1">
+    <div class="hd"><span class="code">1.4</span><span class="en">Manage Project Execution</span><span class="vn">Quản lý thực thi dự án</span><span class="grp">Executing</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Điều phối con người và nguồn lực để thực sự làm ra sản phẩm theo đúng kế hoạch.</dd>
+      <dt>Đầu ra</dt><dd><b class="k">Deliverables</b> (sản phẩm bàn giao), <b class="k">work performance data</b> (dữ liệu thô), <b class="k">issue log</b> (sổ vấn đề), <b class="k">change requests</b>.</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">Nhớ chuỗi ba tầng dữ liệu: <b>data</b> (số liệu thô, sinh ở <code>1.4</code>) → <b>information</b> (đã phân tích, sinh ở các quy trình <i>Monitor</i>) → <b>report</b> (đóng gói để gửi đi, sinh ở <code>1.7</code>). Đề hỏi "PM nên gửi gì cho sponsor?" → report, không phải data.</dd>
+    </dl>
+  </div>
+
+  <div class="pr d1">
+    <div class="hd"><span class="code">1.5</span><span class="en">Manage Quality Assurance</span><span class="vn">Quản lý đảm bảo chất lượng</span><span class="grp">Executing</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Đảm bảo <i>cách làm</i> đúng chuẩn (assurance) và <i>sản phẩm làm ra</i> đạt yêu cầu (control). PMBOK 8 gộp cả QA lẫn QC vào một quy trình này.</dd>
+      <dt>Đầu ra</dt><dd><b class="k">Verified deliverables</b> (bàn giao đã kiểm nội bộ), <b class="k">quality reports</b>, <b class="k">test and evaluation documents</b>, change requests.</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">Phân biệt dứt khoát với <code>2.6 Validate Scope</code>: <code>1.5</code> là <b>nội bộ kiểm</b> → ra <i>verified</i>; <code>2.6</code> là <b>khách hàng duyệt</b> → ra <i>accepted</i>. Thứ tự luôn là <code>1.5</code> trước, <code>2.6</code> sau. Và nhớ: <b>prevention</b> (phòng ngừa) rẻ hơn <b>inspection</b> (kiểm tra); <b>cost of conformance</b> luôn rẻ hơn <b>cost of non-conformance</b>.</dd>
+    </dl>
+  </div>
+
+  <div class="pr d1">
+    <div class="hd"><span class="code">1.6</span><span class="en">Manage Project Knowledge</span><span class="vn">Quản lý tri thức dự án</span><span class="grp">Executing</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Dùng lại tri thức có sẵn của tổ chức và tạo ra tri thức mới từ chính dự án này.</dd>
+      <dt>Đầu ra</dt><dd><b class="k">Lessons learned register</b> (sổ bài học kinh nghiệm), cập nhật <b class="k">OPA</b> (organizational process assets — tài sản quy trình của tổ chức).</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">Lessons learned được ghi <b>liên tục suốt dự án</b>, không phải đợi đến lúc đóng. Đến <code>1.9</code> nó mới được kết tinh thành <b class="k">lessons learned repository</b> (kho dùng chung cho dự án sau). Phân biệt <b class="k">explicit knowledge</b> (tri thức hiện — viết ra được) và <b class="k">tacit knowledge</b> (tri thức ẩn — nằm trong đầu người, phải truyền qua đối thoại).</dd>
+    </dl>
+  </div>
+
+  <div class="pr d1">
+    <div class="hd"><span class="code">1.7</span><span class="en">Monitor and Control Project Performance</span><span class="vn">Giám sát &amp; kiểm soát hiệu suất</span><span class="grp">M &amp; C</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>So thực tế với baseline, phát hiện lệch, dự báo xu hướng và quyết định có cần hành động không.</dd>
+      <dt>Đầu ra</dt><dd><b class="k">Work performance reports</b>, <b class="k">change requests</b>, <b class="k">forecasts</b> (EAC, ETC).</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">Nơi <b>sinh ra</b> change request nhưng <b>không</b> phê duyệt. Duyệt là việc của <code>1.8</code>. Phân biệt <b class="k">corrective action</b> (sửa cái đã lệch), <b class="k">preventive action</b> (chặn cái sắp lệch), <b class="k">defect repair</b> (sửa lỗi sản phẩm).</dd>
+    </dl>
+  </div>
+
+  <div class="pr d1">
+    <div class="hd"><span class="code">1.8</span><span class="en">Assess and Implement Changes</span><span class="vn">Đánh giá &amp; thực thi thay đổi</span><span class="grp">M &amp; C</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Xử lý mọi yêu cầu thay đổi qua một cửa chính thức — <b class="k">integrated change control</b> (kiểm soát thay đổi tích hợp).</dd>
+      <dt>Đầu ra</dt><dd><b class="k">Approved change requests</b>, <b class="k">change log</b> (nhật ký thay đổi), cập nhật kế hoạch và baselines.</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap"><b>Quy trình mẫu mực khi đề hỏi "khách hàng đòi thêm tính năng, PM làm gì?"</b> — thứ tự đúng: ① đánh giá tác động lên scope/time/cost/risk → ② đưa <b class="k">CCB</b> (change control board) hoặc người có thẩm quyền → ③ duyệt hoặc từ chối → ④ cập nhật baseline &amp; change log → ⑤ thông báo stakeholders. Đáp án "làm luôn cho khách vui" và "từ chối thẳng" đều <b>sai</b>. Trong agile, thay đổi vào <b class="k">product backlog</b> chứ không qua CCB.</dd>
+    </dl>
+  </div>
+
+  <div class="pr d1">
+    <div class="hd"><span class="code">1.9</span><span class="en">Close Project or Phase</span><span class="vn">Kết thúc dự án / giai đoạn</span><span class="grp">Closing</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Hoàn tất mọi hoạt động, bàn giao chính thức, giải phóng nguồn lực, lưu trữ hồ sơ.</dd>
+      <dt>Đầu ra</dt><dd><b class="k">Final product/service/result transition</b> (chuyển giao cuối), <b class="k">final report</b>, <b class="k">lessons learned repository</b>, cập nhật OPA.</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">Phải làm <b>kể cả khi dự án bị huỷ</b> — huỷ giữa chừng vẫn phải đóng đúng thủ tục và ghi lại lý do. Thứ tự: đóng <b>hợp đồng</b> (procurement) xong mới đóng dự án. Và giải phóng nguồn lực là bước <b>cuối</b>, không phải đầu.</dd>
+    </dl>
+  </div>
+
+  <!-- ───── SCOPE ───── -->
+  <h3 class="dom" id="g2"><span class="sq" style="background:var(--sco)"></span>2 · Scope <span class="cnt">Phạm vi · 6 quy trình</span></h3>
+  <p class="domnote">Bốn quy trình đầu là một dây chuyền tinh lọc: <b>quy tắc → yêu cầu → phạm vi → cấu trúc</b>. Hai quy trình cuối canh giữ nó.</p>
+
+  <div class="pr d2">
+    <div class="hd"><span class="code">2.1</span><span class="en">Plan Scope Management</span><span class="vn">Hoạch định quản lý phạm vi</span><span class="grp">Planning</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Định ra <i>cách</i> sẽ xác định, xác nhận và kiểm soát phạm vi — chưa nói phạm vi là gì.</dd>
+      <dt>Đầu ra</dt><dd><b class="k">Scope management plan</b>, <b class="k">requirements management plan</b>.</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">Đây là "kế hoạch để lập kế hoạch". Mọi lĩnh vực đều mở đầu bằng một quy trình kiểu này — thấy tên <code>Plan … Management</code> là biết nó chỉ ra <i>luật chơi</i>, không ra nội dung.</dd>
+    </dl>
+  </div>
+
+  <div class="pr d2">
+    <div class="hd"><span class="code">2.2</span><span class="en">Elicit and Analyze Requirements</span><span class="vn">Khai thác &amp; phân tích yêu cầu</span><span class="grp">Planning</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Moi ra nhu cầu thật của stakeholder rồi phân tích, sắp thứ tự ưu tiên. "Elicit" = <b>khai thác</b>, mạnh hơn "thu thập" — hàm ý stakeholder thường <i>không tự nói ra</i> điều họ thật sự cần.</dd>
+      <dt>Đầu ra</dt><dd><b class="k">Requirements documentation</b>, <b class="k">requirements traceability matrix</b> (RTM — ma trận truy vết yêu cầu).</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">RTM dùng để truy <b>ngược</b> mỗi yêu cầu về mục tiêu kinh doanh và truy <b>xuôi</b> tới deliverable — công cụ chống <b class="k">scope creep</b> và chống <b class="k">gold plating</b>. Kỹ thuật hay hỏi: <b class="k">focus group</b>, <b class="k">interviews</b>, <b class="k">brainstorming</b>, <b class="k">prototypes</b>, <b class="k">benchmarking</b>, và <b class="k">nominal group technique</b> (brainstorm rồi bỏ phiếu xếp hạng).</dd>
+    </dl>
+  </div>
+
+  <div class="pr d2">
+    <div class="hd"><span class="code">2.3</span><span class="en">Define Scope</span><span class="vn">Xác định phạm vi</span><span class="grp">Planning</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Chọn từ đống yêu cầu ra cái nào <i>trong</i> dự án này, cái nào <i>ngoài</i>.</dd>
+      <dt>Đầu ra</dt><dd><b class="k">Project scope statement</b> (tuyên bố phạm vi) — có cả mục <b class="k">exclusions</b> (những gì <b>không</b> làm), <b class="k">acceptance criteria</b>, <b class="k">constraints</b> (ràng buộc) và <b class="k">assumptions</b> (giả định).</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">Phần <i>exclusions</i> mới là thứ cứu PM khỏi cãi nhau về sau. Requirements documentation (<code>2.2</code>) là <b>tất cả</b> nhu cầu nghe được; scope statement (<code>2.3</code>) là <b>tập con</b> đã được chốt cho dự án này.</dd>
+    </dl>
+  </div>
+
+  <div class="pr d2">
+    <div class="hd"><span class="code">2.4</span><span class="en">Develop Scope Structure</span><span class="vn">Xây dựng cấu trúc phạm vi</span><span class="grp">Planning</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Chia phạm vi thành các mảnh nhỏ quản lý được — kỹ thuật gọi là <b class="k">decomposition</b> (phân rã).</dd>
+      <dt>Đầu ra</dt><dd><b class="k">WBS</b> (work breakdown structure — cấu trúc phân rã công việc), <b class="k">WBS dictionary</b>, và <b class="k">scope baseline</b>.</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">Học thuộc: <b>Scope baseline = scope statement + WBS + WBS dictionary</b> (đúng 3 thành phần). Mức thấp nhất của WBS gọi là <b class="k">work package</b> (gói công việc). WBS mô tả <b>sản phẩm bàn giao</b>, <i>không</i> phải danh sách hoạt động hay lịch trình. Trong agile, thứ tương đương là <b class="k">product backlog</b>.</dd>
+    </dl>
+  </div>
+
+  <div class="pr d2">
+    <div class="hd"><span class="code">2.5</span><span class="en">Monitor and Control Scope</span><span class="vn">Giám sát &amp; kiểm soát phạm vi</span><span class="grp">M &amp; C</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Canh cho phạm vi thực tế không phình ra ngoài baseline.</dd>
+      <dt>Đầu ra</dt><dd><b class="k">Work performance information</b>, <b class="k">change requests</b>.</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">Hai tội danh, đề hỏi rất nhiều: <b class="k">Scope creep</b> = phạm vi phình dần <i>không qua phê duyệt</i>, thường do khách hàng xin thêm từng chút. <b class="k">Gold plating</b> = <i>nhóm dự án tự ý</i> thêm tính năng để làm khách hài lòng. Cả hai đều <b>sai</b> — gold plating sai kể cả khi miễn phí và khách thích.</dd>
+    </dl>
+  </div>
+
+  <div class="pr d2">
+    <div class="hd"><span class="code">2.6</span><span class="en">Validate Scope</span><span class="vn">Nghiệm thu phạm vi</span><span class="grp">M &amp; C</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Đưa sản phẩm cho khách hàng / sponsor xem xét và <b>ký nhận chính thức</b>.</dd>
+      <dt>Đầu ra</dt><dd><b class="k">Accepted deliverables</b> (bàn giao đã được chấp nhận). Nếu khách từ chối → sinh <b class="k">change request</b> để sửa.</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">Cặp bẫy kinh điển nhất của đề: <code>1.5</code> = <b>nội bộ</b> kiểm chất lượng → <i>verified deliverables</i>. <code>2.6</code> = <b>khách hàng</b> nghiệm thu → <i>accepted deliverables</i>. Trình tự bắt buộc: verified <b>trước</b>, accepted <b>sau</b>. Câu hỏi "deliverable đã kiểm chất lượng xong, bước tiếp theo?" → Validate Scope.</dd>
+    </dl>
+  </div>
+
+  <!-- ───── SCHEDULE ───── -->
+  <h3 class="dom" id="g3"><span class="sq" style="background:var(--sch)"></span>3 · Schedule <span class="cnt">Tiến độ · 3 quy trình</span></h3>
+  <p class="domnote">Ít quy trình nhưng <b>nhiều công thức</b>. PMBOK 8 nén 6 quy trình lịch trình của bản 6 xuống còn 3 — nghĩa là <code>3.2</code> ôm rất nhiều nội dung.</p>
+
+  <div class="pr d3">
+    <div class="hd"><span class="code">3.1</span><span class="en">Plan Schedule Management</span><span class="vn">Hoạch định quản lý tiến độ</span><span class="grp">Planning</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Chốt luật chơi về thời gian: đơn vị đo, mức chính xác, ngưỡng chấp nhận sai lệch, quy tắc cập nhật.</dd>
+      <dt>Đầu ra</dt><dd><b class="k">Schedule management plan</b>.</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">Đây là nơi định nghĩa <b class="k">control thresholds</b> (ngưỡng kiểm soát) — vượt ngưỡng mới phải hành động. Đề hay hỏi "lệch 2% có cần báo không?" → tuỳ ngưỡng đã định ở đây.</dd>
+    </dl>
+  </div>
+
+  <div class="pr d3">
+    <div class="hd"><span class="code">3.2</span><span class="en">Develop Schedule</span><span class="vn">Xây dựng tiến độ</span><span class="grp">Planning</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Gộp cả 4 việc: liệt kê hoạt động, sắp thứ tự phụ thuộc, ước lượng thời lượng, và dựng thành lịch có ngày tháng.</dd>
+      <dt>Đầu ra</dt><dd><b class="k">Project schedule</b>, <b class="k">schedule baseline</b>, <b class="k">critical path</b> (đường găng), <b class="k">milestone list</b>.</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap"><b class="k">Critical path</b> = chuỗi hoạt động <b>dài nhất</b>, có <b class="k">float/slack</b> (thời gian dự trữ) bằng <b>0</b> — trễ một ngày là cả dự án trễ một ngày. Hai cách rút ngắn: <b class="k">crashing</b> (thêm nguồn lực → <i>tăng chi phí</i>) và <b class="k">fast tracking</b> (làm song song các việc vốn tuần tự → <i>tăng rủi ro &amp; phải làm lại</i>). Bốn quan hệ phụ thuộc: FS, SS, FF, SF. <b class="k">Lead</b> = cho chạy sớm, <b class="k">lag</b> = buộc chờ.</dd>
+    </dl>
+  </div>
+
+  <div class="pr d3">
+    <div class="hd"><span class="code">3.3</span><span class="en">Monitor and Control Schedule</span><span class="vn">Giám sát &amp; kiểm soát tiến độ</span><span class="grp">M &amp; C</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Theo dõi tiến độ thực tế so với baseline và xử lý khi lệch.</dd>
+      <dt>Đầu ra</dt><dd><b class="k">Work performance information</b> (SV, SPI), <b class="k">schedule forecasts</b>, change requests.</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap"><b>SV = EV − PV</b> (âm là chậm); <b>SPI = EV ÷ PV</b> (nhỏ hơn 1 là chậm). Trong agile, thứ tương đương là <b class="k">burndown chart</b>, <b class="k">velocity</b> và <b class="k">cumulative flow diagram</b> — ECO 2026 có dạng câu <b>graphic-based</b> bắt đọc thẳng biểu đồ.</dd>
+    </dl>
+  </div>
+
+  <!-- ───── FINANCE ───── -->
+  <h3 class="dom" id="g4"><span class="sq" style="background:var(--fin)"></span>4 · Finance <span class="cnt">Tài chính · 4 quy trình</span></h3>
+  <p class="domnote">Dây chuyền: <b>luật chơi → ước lượng từng việc → gom thành ngân sách → theo dõi tiêu</b>. Lĩnh vực nhiều công thức nhất.</p>
+
+  <div class="pr d4">
+    <div class="hd"><span class="code">4.1</span><span class="en">Plan Financial Management</span><span class="vn">Hoạch định quản lý tài chính</span><span class="grp">Planning</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Chốt cách ước lượng, lập ngân sách và kiểm soát chi phí; định đơn vị tiền tệ, mức làm tròn, ngưỡng sai lệch.</dd>
+      <dt>Đầu ra</dt><dd><b class="k">Cost management plan</b> (hoặc financial management plan).</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">Nơi quy định dùng <b class="k">EVM</b> (earned value management) hay không, và quy tắc tính tiến độ hoàn thành (0/100, 50/50…).</dd>
+    </dl>
+  </div>
+
+  <div class="pr d4">
+    <div class="hd"><span class="code">4.2</span><span class="en">Estimate Costs</span><span class="vn">Ước lượng chi phí</span><span class="grp">Planning</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Tính tiền cần cho <i>từng</i> gói công việc.</dd>
+      <dt>Đầu ra</dt><dd><b class="k">Cost estimates</b>, <b class="k">basis of estimates</b> (căn cứ ước lượng — giải thích vì sao ra con số đó).</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">Bốn kỹ thuật, phải biết đánh đổi: <b class="k">Analogous</b> (tương tự — nhanh, rẻ, <i>kém chính xác nhất</i>, dùng khi thiếu thông tin); <b class="k">Parametric</b> (tham số — đơn giá × khối lượng); <b class="k">Bottom-up</b> (từ dưới lên — <i>chính xác nhất</i>, tốn công nhất); <b class="k">Three-point</b> / PERT — công thức <b>(O + 4M + P) ÷ 6</b>.</dd>
+    </dl>
+  </div>
+
+  <div class="pr d4">
+    <div class="hd"><span class="code">4.3</span><span class="en">Develop Budget</span><span class="vn">Xây dựng ngân sách</span><span class="grp">Planning</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Gom các ước lượng lẻ thành ngân sách tổng có phân bổ theo thời gian.</dd>
+      <dt>Đầu ra</dt><dd><b class="k">Cost baseline</b>, <b class="k">project funding requirements</b> (nhu cầu giải ngân theo mốc).</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">Bậc thang tiền, đề hỏi rất nhiều: ước lượng gói công việc → + <b class="k">contingency reserve</b> (dự phòng cho <i>known unknowns</i> — rủi ro đã nhận diện; <b>PM được tự dùng</b>) = <b>cost baseline</b> → + <b class="k">management reserve</b> (dự phòng cho <i>unknown unknowns</i>; <b>phải xin sponsor</b>, nằm <b>ngoài</b> baseline) = <b>project budget</b>.</dd>
+    </dl>
+  </div>
+
+  <div class="pr d4">
+    <div class="hd"><span class="code">4.4</span><span class="en">Monitor and Control Finances</span><span class="vn">Giám sát &amp; kiểm soát tài chính</span><span class="grp">M &amp; C</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Theo dõi tiêu thực tế, dự báo tổng chi cuối dự án, xử lý khi vượt.</dd>
+      <dt>Đầu ra</dt><dd><b class="k">Cost forecasts</b> (EAC, ETC, VAC), work performance information, change requests.</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">Bộ công thức <b class="k">EVM</b> bắt buộc thuộc: <b>CV = EV − AC</b>, <b>CPI = EV ÷ AC</b>, <b>SV = EV − PV</b>, <b>SPI = EV ÷ PV</b>, <b>EAC = BAC ÷ CPI</b> (khi xu hướng hiện tại tiếp diễn), <b>ETC = EAC − AC</b>, <b>VAC = BAC − EAC</b>. Quy tắc dấu: <b>số âm là xấu, chỉ số dưới 1 là xấu</b> — đúng cho cả chi phí lẫn tiến độ.</dd>
+    </dl>
+  </div>
+
+  <!-- ───── STAKEHOLDERS ───── -->
+  <h3 class="dom" id="g5"><span class="sq" style="background:var(--stk)"></span>5 · Stakeholders <span class="cnt">Các bên liên quan · 7 quy trình</span></h3>
+  <p class="domnote">Chú ý cấu trúc <b>song sinh</b>: mỗi quy trình về <i>stakeholder</i> (con người) đều có một quy trình <i>communications</i> (thông tin) đi kèm — <code>5.2/5.3</code>, <code>5.4/5.5</code>, <code>5.6/5.7</code>. Nhớ theo cặp thì nhớ hết cả 7.</p>
+
+  <div class="pr d5">
+    <div class="hd"><span class="code">5.1</span><span class="en">Identify Stakeholders</span><span class="vn">Nhận diện các bên liên quan</span><span class="grp">Planning</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Tìm ra <i>tất cả</i> những ai ảnh hưởng đến dự án hoặc bị dự án ảnh hưởng, và ghi nhận quyền lợi / kỳ vọng của họ.</dd>
+      <dt>Đầu ra</dt><dd><b class="k">Stakeholder register</b> (sổ đăng ký các bên liên quan).</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">Làm <b>sớm nhất có thể</b> và <b>lặp lại</b> suốt dự án — stakeholder mới xuất hiện liên tục. Công cụ phân loại: <b class="k">power/interest grid</b> (lưới quyền lực–quan tâm) và <b class="k">salience model</b> (quyền lực, tính chính danh, tính cấp bách). Quyền lực cao + quan tâm cao → <i>manage closely</i>.</dd>
+    </dl>
+  </div>
+
+  <div class="pr d5">
+    <div class="hd"><span class="code">5.2</span><span class="en">Plan Stakeholder Engagement</span><span class="vn">Hoạch định gắn kết các bên</span><span class="grp">Planning</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Vạch chiến lược để kéo từng nhóm stakeholder về phía ủng hộ dự án.</dd>
+      <dt>Đầu ra</dt><dd><b class="k">Stakeholder engagement plan</b>.</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">Thuộc <b class="k">stakeholder engagement assessment matrix</b> với <b>5 mức</b>: <i>unaware</i> (chưa biết) → <i>resistant</i> (chống đối) → <i>neutral</i> (trung lập) → <i>supportive</i> (ủng hộ) → <i>leading</i> (dẫn dắt). Đánh dấu <b>C</b> = current (hiện tại) và <b>D</b> = desired (mong muốn); khoảng cách C→D chính là việc phải làm.</dd>
+    </dl>
+  </div>
+
+  <div class="pr d5">
+    <div class="hd"><span class="code">5.3</span><span class="en">Plan Communications Management</span><span class="vn">Hoạch định quản lý giao tiếp</span><span class="grp">Planning</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Quyết định ai cần thông tin gì, dạng nào, tần suất nào, qua kênh nào.</dd>
+      <dt>Đầu ra</dt><dd><b class="k">Communications management plan</b>.</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">Công thức số kênh giao tiếp: <b>n(n − 1) ÷ 2</b>. Đề hay hỏi "nhóm tăng từ 5 lên 8 người, số kênh tăng bao nhiêu?" → 10 → 28, tăng <b>18</b>. Đọc kỹ: hỏi <i>tăng thêm</i> hay <i>tổng</i>.</dd>
+    </dl>
+  </div>
+
+  <div class="pr d5">
+    <div class="hd"><span class="code">5.4</span><span class="en">Manage Stakeholder Engagement</span><span class="vn">Quản lý gắn kết các bên</span><span class="grp">Executing</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Thực sự làm việc với stakeholder: đối thoại, thương lượng, xử lý kỳ vọng và mối lo của họ.</dd>
+      <dt>Đầu ra</dt><dd>Change requests, cập nhật <b class="k">issue log</b> và stakeholder register.</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">Gặp stakeholder chống đối, đáp án đúng gần như luôn là: <b>gặp trực tiếp để hiểu nguyên nhân gốc trước đã</b>. Không leo thang lên sponsor ngay, không phớt lờ, không đi đường vòng qua sếp của họ.</dd>
+    </dl>
+  </div>
+
+  <div class="pr d5">
+    <div class="hd"><span class="code">5.5</span><span class="en">Manage Communications</span><span class="vn">Quản lý giao tiếp</span><span class="grp">Executing</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Thu thập, tạo, phân phối và lưu trữ thông tin dự án đúng người đúng lúc.</dd>
+      <dt>Đầu ra</dt><dd><b class="k">Project communications</b> (báo cáo, thông báo, bản trình bày…).</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">Ba phương thức: <b class="k">push</b> (đẩy — email, báo cáo gửi đi; không đảm bảo người ta đọc), <b class="k">pull</b> (kéo — wiki, portal; người nhận tự vào lấy, hợp cho lượng lớn thông tin), <b class="k">interactive</b> (tương tác — họp, gọi điện; hiệu quả nhất). Chuyện <b>nhạy cảm, xung đột, tin xấu</b> → luôn chọn interactive / mặt đối mặt.</dd>
+    </dl>
+  </div>
+
+  <div class="pr d5">
+    <div class="hd"><span class="code">5.6</span><span class="en">Monitor Stakeholder Engagement</span><span class="vn">Giám sát gắn kết các bên</span><span class="grp">M &amp; C</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Xem chiến lược gắn kết có hiệu quả không, mức độ ủng hộ có dịch chuyển đúng hướng không.</dd>
+      <dt>Đầu ra</dt><dd>Work performance information, change requests, cập nhật engagement plan.</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">Đo bằng chính <b class="k">engagement assessment matrix</b> của <code>5.2</code> — so lại C với D. Stakeholder tụt hạng ủng hộ là tín hiệu phải hành động, không đợi họ khiếu nại.</dd>
+    </dl>
+  </div>
+
+  <div class="pr d5">
+    <div class="hd"><span class="code">5.7</span><span class="en">Monitor Communications</span><span class="vn">Giám sát giao tiếp</span><span class="grp">M &amp; C</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Kiểm tra thông tin có <b>đến đúng người, đúng lúc, đúng dạng</b> và có <b>được hiểu đúng</b> không.</dd>
+      <dt>Đầu ra</dt><dd>Work performance information, change requests, cập nhật communications plan.</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">Gửi đi ≠ giao tiếp thành công. Mô hình giao tiếp có <b class="k">feedback</b> (phản hồi) và <b class="k">noise</b> (nhiễu) — thiếu vòng phản hồi là chưa hoàn tất. Đề mô tả "stakeholder phàn nàn không được cập nhật dù PM vẫn gửi báo cáo" → vấn đề nằm ở đây.</dd>
+    </dl>
+  </div>
+
+  <!-- ───── RESOURCES ───── -->
+  <h3 class="dom" id="g6"><span class="sq" style="background:var(--res)"></span>6 · Resources <span class="cnt">Nguồn lực · 5 quy trình</span></h3>
+  <p class="domnote">Lĩnh vực này gộp <b>người</b> và <b>vật</b>. Phần "người" — đặc biệt <code>6.4</code> — là mỏ câu hỏi tình huống của <b>Domain I (People)</b> trong ECO 2026.</p>
+
+  <div class="pr d6">
+    <div class="hd"><span class="code">6.1</span><span class="en">Plan Resource Management</span><span class="vn">Hoạch định quản lý nguồn lực</span><span class="grp">Planning</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Định cách xác định, huy động, quản lý và giải phóng cả nhân lực lẫn vật lực.</dd>
+      <dt>Đầu ra</dt><dd><b class="k">Resource management plan</b>, <b class="k">team charter</b> (hiến chương nhóm — quy tắc làm việc chung).</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap"><b>Team charter do cả nhóm cùng lập</b>, không phải PM viết rồi phát xuống — đây là điểm đề hay kiểm tra tư duy <b class="k">servant leadership</b>. Nội dung gồm giá trị chung, quy tắc họp, cách ra quyết định, cách xử lý xung đột.</dd>
+    </dl>
+  </div>
+
+  <div class="pr d6">
+    <div class="hd"><span class="code">6.2</span><span class="en">Estimate Resources</span><span class="vn">Ước lượng nguồn lực</span><span class="grp">Planning</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Xác định cần bao nhiêu người, kỹ năng gì, thiết bị và vật tư nào cho từng gói công việc.</dd>
+      <dt>Đầu ra</dt><dd><b class="k">Resource requirements</b>, <b class="k">resource breakdown structure</b> (RBS — cấu trúc phân rã nguồn lực).</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">Cẩn thận chữ viết tắt <b>RBS</b> — nó dùng cho <i>cả</i> <b>Resource</b> Breakdown Structure lẫn <b>Risk</b> Breakdown Structure (<code>7.1</code>). Nhìn ngữ cảnh câu hỏi mà đoán.</dd>
+    </dl>
+  </div>
+
+  <div class="pr d6">
+    <div class="hd"><span class="code">6.3</span><span class="en">Acquire Resources</span><span class="vn">Huy động nguồn lực</span><span class="grp">Executing</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Thực sự lấy được người và vật về cho dự án.</dd>
+      <dt>Đầu ra</dt><dd><b class="k">Project team assignments</b>, <b class="k">physical resource assignments</b>, <b class="k">resource calendars</b> (lịch sẵn sàng).</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">Trong <b class="k">functional</b> hoặc <b class="k">weak matrix</b> organization, PM <b>ít quyền</b> — phải <b class="k">negotiate</b> (thương lượng) với <b class="k">functional manager</b>, không được "ra lệnh". Trong <b class="k">projectized</b> thì PM toàn quyền. Đề luôn cài dạng tổ chức vào đề bài — đọc kỹ chỗ đó trước khi chọn đáp án.</dd>
+    </dl>
+  </div>
+
+  <div class="pr d6">
+    <div class="hd"><span class="code">6.4</span><span class="en">Lead the Team</span><span class="vn">Dẫn dắt nhóm</span><span class="grp">Executing</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Phát triển năng lực nhóm, tạo động lực, gỡ cản trở, xử lý xung đột và đánh giá hiệu suất.</dd>
+      <dt>Đầu ra</dt><dd><b class="k">Team performance assessments</b>, change requests, cập nhật resource calendars.</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">Quy trình <b>nặng nhất về câu hỏi tình huống</b>. Bắt buộc thuộc: <br>• <b class="k">Tuckman</b> — forming → storming → norming → performing → adjourning. <br>• <b>Năm cách xử lý xung đột</b>, xếp từ tốt nhất: <b class="k">collaborate / problem solve</b> (hợp tác — <i>gần như luôn là đáp án đúng</i>) › <b class="k">compromise</b> (thoả hiệp — hai bên cùng nhượng) › <b class="k">smooth / accommodate</b> (xoa dịu) › <b class="k">force / direct</b> (áp đặt) › <b class="k">withdraw / avoid</b> (né tránh — tệ nhất). <br>• <b class="k">Servant leadership</b>: PM phục vụ nhóm, gỡ <b class="k">impediments</b>, không giao việc vi mô.</dd>
+    </dl>
+  </div>
+
+  <div class="pr d6">
+    <div class="hd"><span class="code">6.5</span><span class="en">Monitor and Control Resourcing</span><span class="vn">Giám sát &amp; kiểm soát nguồn lực</span><span class="grp">M &amp; C</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Đảm bảo nguồn lực có mặt đúng lúc, đúng lượng, và dùng đúng như kế hoạch.</dd>
+      <dt>Đầu ra</dt><dd>Work performance information, change requests.</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">Hai kỹ thuật cân bằng dễ lẫn: <b class="k">resource levelling</b> (san bằng — ưu tiên giới hạn nguồn lực, <i>có thể làm dự án dài ra</i> và đổi critical path) và <b class="k">resource smoothing</b> (làm mượt — <i>không</i> được đụng vào critical path, chỉ dùng phần float sẵn có).</dd>
+    </dl>
+  </div>
+
+  <!-- ───── RISK ───── -->
+  <h3 class="dom" id="g7"><span class="sq" style="background:var(--rsk)"></span>7 · Risk <span class="cnt">Rủi ro · 6 quy trình</span></h3>
+  <p class="domnote">Đọc theo chuỗi 6 bước liền mạch: <b>Plan → Identify → Analyze → Plan Responses → Implement → Monitor</b>. Trong ECO 2026, rủi ro nằm ở <b>Domain III — Business Environment</b>, phần chiếm 26% đề.</p>
+
+  <div class="pr d7">
+    <div class="hd"><span class="code">7.1</span><span class="en">Plan Risk Management</span><span class="vn">Hoạch định quản lý rủi ro</span><span class="grp">Planning</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Định cách làm rủi ro cho dự án này: mức nỗ lực bỏ ra, ai chịu trách nhiệm, thang đo nào.</dd>
+      <dt>Đầu ra</dt><dd><b class="k">Risk management plan</b> — chứa <b class="k">risk categories</b> / <b class="k">RBS</b> (risk breakdown structure), định nghĩa thang <b class="k">probability</b> &amp; <b class="k">impact</b>, và <b class="k">risk appetite / threshold</b> (khẩu vị / ngưỡng rủi ro).</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">Ba từ dễ lẫn: <b class="k">risk appetite</b> (mức rủi ro tổ chức <i>sẵn sàng</i> chấp nhận), <b class="k">risk tolerance</b> (biên độ chịu đựng được), <b class="k">risk threshold</b> (ngưỡng cụ thể, vượt là phải hành động).</dd>
+    </dl>
+  </div>
+
+  <div class="pr d7">
+    <div class="hd"><span class="code">7.2</span><span class="en">Identify Risks</span><span class="vn">Nhận diện rủi ro</span><span class="grp">Planning</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Liệt kê những gì <i>có thể</i> xảy ra — cả xấu lẫn tốt — và ghi lại đặc điểm từng cái.</dd>
+      <dt>Đầu ra</dt><dd><b class="k">Risk register</b> (sổ rủi ro), <b class="k">risk report</b> (báo cáo rủi ro tổng thể).</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">Hai điểm PMI nhấn: ① Rủi ro gồm <b>cả cơ hội</b> (<b class="k">opportunities</b>), không chỉ nguy cơ (<b class="k">threats</b>). ② Nhận diện rủi ro là việc của <b>tất cả mọi người</b> và <b>lặp lại suốt dự án</b>, không phải làm một lần đầu dự án rồi thôi. Phân biệt <b class="k">risk</b> (chưa xảy ra, còn xác suất) với <b class="k">issue</b> (đã xảy ra rồi → vào issue log).</dd>
+    </dl>
+  </div>
+
+  <div class="pr d7">
+    <div class="hd"><span class="code">7.3</span><span class="en">Perform Risk Analysis</span><span class="vn">Phân tích rủi ro</span><span class="grp">Planning</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Xếp hạng rủi ro theo mức nghiêm trọng và, với những cái lớn, lượng hoá thành con số.</dd>
+      <dt>Đầu ra</dt><dd>Risk register đã xếp ưu tiên, <b class="k">risk report</b> cập nhật, đánh giá <b>mức phơi nhiễm tổng thể</b>.</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">PMBOK 8 gộp hai quy trình cũ vào một, nhưng đề vẫn phân biệt: <b class="k">Qualitative</b> (định tính — xếp hạng chủ quan bằng <b>probability × impact matrix</b>; làm cho <b>mọi</b> rủi ro; nhanh, rẻ) và <b class="k">Quantitative</b> (định lượng — số hoá bằng <b class="k">EMV</b> = xác suất × tác động, <b class="k">Monte Carlo simulation</b>, <b class="k">decision tree</b>, <b class="k">sensitivity analysis</b> / biểu đồ tornado; chỉ làm cho rủi ro <b>ưu tiên cao</b>). Định tính <b>luôn trước</b> định lượng.</dd>
+    </dl>
+  </div>
+
+  <div class="pr d7">
+    <div class="hd"><span class="code">7.4</span><span class="en">Plan Risk Responses</span><span class="vn">Hoạch định ứng phó rủi ro</span><span class="grp">Planning</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Chọn hành động cho từng rủi ro và giao <b class="k">risk owner</b> (người chịu trách nhiệm).</dd>
+      <dt>Đầu ra</dt><dd>Change requests, <b class="k">contingency plans</b> (kế hoạch dự phòng — kích hoạt khi rủi ro xảy ra), <b class="k">fallback plans</b> (kế hoạch lùi — khi contingency cũng thất bại).</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">Thuộc <b>hai bộ năm chiến lược đối xứng nhau</b>: <br>• <b>Threat</b> (nguy cơ): <b class="k">avoid</b> (né bỏ hẳn nguyên nhân) · <b class="k">transfer</b> (chuyển giao — bảo hiểm, hợp đồng) · <b class="k">mitigate</b> (giảm thiểu xác suất/tác động) · <b class="k">accept</b> (chấp nhận) · <b class="k">escalate</b> (leo thang — ngoài thẩm quyền PM). <br>• <b>Opportunity</b> (cơ hội): <b class="k">exploit</b> (khai thác — đảm bảo nó xảy ra) · <b class="k">share</b> (chia sẻ — liên danh) · <b class="k">enhance</b> (nâng cao xác suất) · <b class="k">accept</b> · <b class="k">escalate</b>. <br>Ghép cặp để nhớ: avoid↔exploit, transfer↔share, mitigate↔enhance.</dd>
+    </dl>
+  </div>
+
+  <div class="pr d7">
+    <div class="hd"><span class="code">7.5</span><span class="en">Implement Risk Responses</span><span class="vn">Thực thi ứng phó rủi ro</span><span class="grp">Executing</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Thực sự làm những gì đã hoạch định ở <code>7.4</code>.</dd>
+      <dt>Đầu ra</dt><dd>Change requests, cập nhật issue log và risk register.</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">Quy trình này tồn tại riêng vì <b>lỗi kinh điển ngoài đời</b>: lập kế hoạch ứng phó rất đẹp rồi <i>không ai làm</i>. Đề hay mô tả "rủi ro đã được nhận diện và có kế hoạch ứng phó nhưng vẫn gây thiệt hại" → nguyên nhân nằm ở chỗ thiếu quy trình này.</dd>
+    </dl>
+  </div>
+
+  <div class="pr d7">
+    <div class="hd"><span class="code">7.6</span><span class="en">Monitor Risks</span><span class="vn">Giám sát rủi ro</span><span class="grp">M &amp; C</span></div>
+    <dl>
+      <dt>Mục đích</dt><dd>Theo dõi rủi ro cũ, phát hiện rủi ro mới, đánh giá xem cách làm rủi ro có hiệu quả không.</dd>
+      <dt>Đầu ra</dt><dd>Work performance information, change requests, cập nhật risk register.</dd>
+      <dt class="trap">⚠ Bẫy</dt><dd class="trap">Hai kỹ thuật hay hỏi: <b class="k">risk audit</b> (kiểm toán rủi ro — đánh giá hiệu quả của <i>cả quy trình</i> quản lý rủi ro, không phải từng rủi ro lẻ) và <b class="k">reserve analysis</b> (xem dự phòng còn lại có đủ cho phần việc còn lại không). Phát hiện rủi ro mới → quay lại <code>7.2</code>; rủi ro đã xảy ra → chuyển thành <b class="k">issue</b>.</dd>
+    </dl>
+  </div>
+
+  <!-- ═══════════════ ÔN NHANH ═══════════════ -->
+  <h2 class="sec"><span class="n">§4</span>Mười cặp bẫy hay ra nhất — tự kiểm tra</h2>
+  <p class="secsub">Che cột phải, tự trả lời trước khi nhìn. Nếu sai quá 3 cặp, quay lại đọc kỹ lĩnh vực tương ứng.</p>
+
+  <div class="tscroll">
+    <table>
+      <thead><tr><th style="width:38%">Cặp dễ lẫn</th><th>Khác nhau ở đâu</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">Verified vs Accepted deliverables</td><td><b>Verified</b> = nội bộ kiểm xong (<code>1.5</code>). <b>Accepted</b> = khách hàng ký nhận (<code>2.6</code>). Verified trước.</td></tr>
+        <tr><td class="mono">Scope creep vs Gold plating</td><td><b>Creep</b> = phình do <i>bên ngoài</i> xin thêm, không qua duyệt. <b>Gold plating</b> = <i>nhóm tự ý</i> thêm. Cả hai đều sai.</td></tr>
+        <tr><td class="mono">Contingency vs Management reserve</td><td><b>Contingency</b> = known unknowns, <i>trong</i> cost baseline, PM tự dùng. <b>Management</b> = unknown unknowns, <i>ngoài</i> baseline, phải xin sponsor.</td></tr>
+        <tr><td class="mono">Crashing vs Fast tracking</td><td><b>Crashing</b> = thêm nguồn lực → tăng <i>chi phí</i>. <b>Fast tracking</b> = làm song song → tăng <i>rủi ro</i>.</td></tr>
+        <tr><td class="mono">Resource levelling vs smoothing</td><td><b>Levelling</b> có thể <i>kéo dài</i> dự án. <b>Smoothing</b> <i>không</i> đụng critical path.</td></tr>
+        <tr><td class="mono">Qualitative vs Quantitative risk</td><td><b>Qualitative</b> = xếp hạng P×I, làm cho <i>mọi</i> rủi ro. <b>Quantitative</b> = số hoá (EMV, Monte Carlo), chỉ cho rủi ro <i>ưu tiên cao</i>.</td></tr>
+        <tr><td class="mono">Risk vs Issue</td><td><b>Risk</b> = chưa xảy ra (risk register). <b>Issue</b> = đã xảy ra (issue log).</td></tr>
+        <tr><td class="mono">Data vs Information vs Report</td><td><b>Data</b> thô (<code>1.4</code>) → <b>Information</b> đã phân tích (các quy trình Monitor) → <b>Report</b> đóng gói gửi đi (<code>1.7</code>).</td></tr>
+        <tr><td class="mono">Project charter vs Business case</td><td><b>Business case</b> có <i>trước</i> dự án, biện minh vì sao nên làm. <b>Charter</b> khai sinh dự án và trao quyền cho PM.</td></tr>
+        <tr><td class="mono">Scope baseline gồm gì</td><td>Đúng <b>3</b> thứ: scope statement + WBS + WBS dictionary.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer class="foot">
+    <b>Nguồn &amp; giới hạn.</b> Danh sách 40 quy trình và cách xếp vào 7 performance domain / 5 focus area theo <b>PMBOK® Guide 8th Edition</b>. Mục "Đầu ra" chỉ nêu <b>sản phẩm chính</b> của mỗi quy trình, không phải danh sách outputs đầy đủ; mục "⚠ Bẫy" là điểm dễ nhầm khi làm đề, không phải trích dẫn nguyên văn từ Guide. Hãy đối chiếu lại với bản Guide gốc trước khi coi bất kỳ chi tiết ITTO nào là chuẩn.<br><br>
+    <b>Nhắc lại điều quan trọng nhất:</b> PMBOK là <i>tài liệu tham khảo</i>, không phải đề cương thi. Thứ quyết định đề thi là <b>PMP® Examination Content Outline 2026</b> (file <code>PMP-Examination-Content-Outline-2026.pdf</code> trong cùng thư mục) với 3 domain và 26 task. Trang này giúp bạn <i>hiểu cơ chế</i> để trả lời câu hỏi tình huống — không phải thứ để học thuộc.<br><br>
+    PMBOK, PMP và PMI là nhãn hiệu đã đăng ký của Project Management Institute.
+  </footer>
+
+</div>
+</body>
+</html>

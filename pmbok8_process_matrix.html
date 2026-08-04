@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PMBOK 8 — Ma trận 40 quy trình</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14161c;
+    --paper:#f7f6f2;
+    --line:#d9d6cd;
+    --muted:#6c6a63;
+
+    --gov:#6b4ba8;   --gov-bg:#ede6f7;
+    --sco:#2e4a8b;   --sco-bg:#e3e8f6;
+    --sch:#0596b8;   --sch-bg:#daf0f6;
+    --fin:#2e9e5b;   --fin-bg:#e0f1e7;
+    --stk:#a0459e;   --stk-bg:#f4e4f2;
+    --res:#c86f83;   --res-bg:#f8e8ec;
+    --rsk:#d19a1f;   --rsk-bg:#faf1d5;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1180px;margin:0 auto;padding:28px 20px 56px;}
+
+  header.top{border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:8px;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+  h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(22px,4vw,34px);
+    line-height:1.05;margin:0 0 4px;letter-spacing:-.01em;}
+  .sub{font-size:13.5px;color:var(--muted);max-width:60ch;line-height:1.5;}
+
+  /* ---- key/legend ---- */
+  .legend{display:flex;flex-wrap:wrap;gap:6px 10px;margin:16px 0 20px;}
+  .chip{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:500;
+    padding:3px 9px 3px 6px;border:1px solid var(--line);border-radius:20px;background:#fff;}
+  .dot{width:11px;height:11px;border-radius:3px;flex:0 0 auto;}
+
+  /* ---- matrix ---- */
+  .scroll{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:#fff;
+    -webkit-overflow-scrolling:touch;}
+  table{border-collapse:collapse;width:100%;min-width:920px;}
+  thead th{position:sticky;top:0;background:var(--ink);color:#fff;
+    font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:12.5px;
+    letter-spacing:.02em;text-align:left;padding:11px 12px;vertical-align:bottom;z-index:3;}
+  thead th .cnt{display:block;font-family:'IBM Plex Mono',monospace;font-weight:500;
+    font-size:10.5px;color:#b9b6cf;letter-spacing:.05em;margin-top:2px;}
+  thead th.rowhdr{width:120px;background:#000;}
+
+  tbody th.disc{position:sticky;left:0;z-index:2;text-align:left;padding:10px 12px;
+    width:120px;vertical-align:top;border-top:1px solid var(--line);}
+  tbody th.disc .dn{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;
+    display:block;line-height:1.1;}
+  tbody th.disc .dl{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);
+    letter-spacing:.08em;}
+  td{border:1px solid var(--line);padding:6px;vertical-align:top;min-width:150px;}
+
+  .proc{border-radius:7px;padding:7px 9px;margin:0 0 6px;line-height:1.2;}
+  .proc:last-child{margin-bottom:0;}
+  .proc .code{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:10.5px;
+    letter-spacing:.03em;opacity:.85;display:block;}
+  .proc .name{font-size:12.5px;font-weight:600;letter-spacing:-.005em;}
+
+  td.empty{background:
+    repeating-linear-gradient(135deg,transparent,transparent 7px,#f0efe9 7px,#f0efe9 8px);}
+  td.empty::after{content:"·";color:#c9c6bd;display:block;text-align:center;font-size:16px;}
+
+  /* discipline tints applied to row cells */
+  tr.r-gov td .proc{background:var(--gov-bg);} tr.r-gov th.disc .dn{color:var(--gov);} tr.r-gov .proc .name{color:#37225e;}
+  tr.r-sco td .proc{background:var(--sco-bg);} tr.r-sco th.disc .dn{color:var(--sco);} tr.r-sco .proc .name{color:#1c2c55;}
+  tr.r-sch td .proc{background:var(--sch-bg);} tr.r-sch th.disc .dn{color:var(--sch);} tr.r-sch .proc .name{color:#064e60;}
+  tr.r-fin td .proc{background:var(--fin-bg);} tr.r-fin th.disc .dn{color:var(--fin);} tr.r-fin .proc .name{color:#155433;}
+  tr.r-stk td .proc{background:var(--stk-bg);} tr.r-stk th.disc .dn{color:var(--stk);} tr.r-stk .proc .name{color:#5c245a;}
+  tr.r-res td .proc{background:var(--res-bg);} tr.r-res th.disc .dn{color:var(--res);} tr.r-res .proc .name{color:#7a3546;}
+  tr.r-rsk td .proc{background:var(--rsk-bg);} tr.r-rsk th.disc .dn{color:var(--rsk);} tr.r-rsk .proc .name{color:#795813;}
+
+  .proc .code{color:inherit;}
+  tr.r-gov .proc .code{color:var(--gov);} tr.r-sco .proc .code{color:var(--sco);}
+  tr.r-sch .proc .code{color:var(--sch);} tr.r-fin .proc .code{color:var(--fin);}
+  tr.r-stk .proc .code{color:var(--stk);} tr.r-res .proc .code{color:var(--res);}
+  tr.r-rsk .proc .code{color:var(--rsk);}
+
+  /* ---- reading guide ---- */
+  .guide{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px;}
+  @media(max-width:720px){.guide{grid-template-columns:1fr;}}
+  .card{border:1px solid var(--line);border-radius:10px;background:#fff;padding:16px 18px;}
+  .card h2{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;margin:0 0 10px;
+    letter-spacing:.01em;}
+  .card h2 .num{font-family:'IBM Plex Mono',monospace;color:var(--muted);font-size:12px;margin-right:6px;}
+  .card p, .card li{font-size:13px;line-height:1.55;color:#33322d;}
+  .card ul{margin:0;padding-left:18px;}
+  .card li{margin-bottom:6px;}
+  .kbd{font-family:'IBM Plex Mono',monospace;font-size:11.5px;background:#efeee8;
+    border:1px solid var(--line);border-radius:4px;padding:1px 5px;}
+  .verb-row{display:flex;gap:8px;align-items:baseline;margin-bottom:7px;font-size:12.5px;}
+  .verb-row .g{font-family:'Space Grotesk',sans-serif;font-weight:700;min-width:88px;font-size:12px;}
+  .verb-row .v{color:var(--muted);}
+
+  footer.foot{margin-top:26px;font-size:11.5px;color:var(--muted);line-height:1.5;
+    border-top:1px solid var(--line);padding-top:12px;}
+
+  @media print{
+    body{background:#fff;} .scroll{overflow:visible;border:none;}
+    table{min-width:0;} thead th{position:static;} tbody th.disc{position:static;}
+    .wrap{max-width:none;padding:0;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="eyebrow">PMBOK® Guide 8th Ed · Bản đồ hệ thống</div>
+    <h1>40 quy trình = 7 lĩnh vực × 5 nhóm</h1>
+    <p class="sub">Cùng 40 quy trình của Ricardo Vargas, nhưng xếp lại thành ma trận. Đọc theo <b>hàng</b> để theo một lĩnh vực suốt vòng đời; đọc theo <b>cột</b> để thấy việc gì xảy ra ở giai đoạn nào. Ô trống = lĩnh vực đó không có quy trình ở giai đoạn ấy — và chính "hình dạng" các ô trống là điều cần nhớ.</p>
+  </header>
+
+  <div class="legend">
+    <span class="chip"><span class="dot" style="background:var(--gov)"></span>1 · Governance</span>
+    <span class="chip"><span class="dot" style="background:var(--sco)"></span>2 · Scope</span>
+    <span class="chip"><span class="dot" style="background:var(--sch)"></span>3 · Schedule</span>
+    <span class="chip"><span class="dot" style="background:var(--fin)"></span>4 · Finance</span>
+    <span class="chip"><span class="dot" style="background:var(--stk)"></span>5 · Stakeholders</span>
+    <span class="chip"><span class="dot" style="background:var(--res)"></span>6 · Resources</span>
+    <span class="chip"><span class="dot" style="background:var(--rsk)"></span>7 · Risk</span>
+  </div>
+
+  <div class="scroll">
+  <table>
+    <thead>
+      <tr>
+        <th class="rowhdr">Lĩnh vực</th>
+        <th>Initiating<span class="cnt">2 quy trình</span></th>
+        <th>Planning<span class="cnt">19 quy trình</span></th>
+        <th>Executing<span class="cnt">8 quy trình</span></th>
+        <th>Monitoring &amp; Controlling<span class="cnt">10 quy trình</span></th>
+        <th>Closing<span class="cnt">1 quy trình</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- GOVERNANCE -->
+      <tr class="r-gov">
+        <th class="disc"><span class="dn">Governance</span><span class="dl">01</span></th>
+        <td><div class="proc"><span class="code">1.1</span><span class="name">Initiate Project or Phase</span></div></td>
+        <td>
+          <div class="proc"><span class="code">1.2</span><span class="name">Integrate and Align Project Plans</span></div>
+          <div class="proc"><span class="code">1.3</span><span class="name">Plan Sourcing Strategy</span></div>
+        </td>
+        <td>
+          <div class="proc"><span class="code">1.4</span><span class="name">Manage Project Execution</span></div>
+          <div class="proc"><span class="code">1.5</span><span class="name">Manage Quality Assurance</span></div>
+          <div class="proc"><span class="code">1.6</span><span class="name">Manage Project Knowledge</span></div>
+        </td>
+        <td>
+          <div class="proc"><span class="code">1.7</span><span class="name">Monitor and Control Project Performance</span></div>
+          <div class="proc"><span class="code">1.8</span><span class="name">Assess and Implement Changes</span></div>
+        </td>
+        <td><div class="proc"><span class="code">1.9</span><span class="name">Close Project or Phase</span></div></td>
+      </tr>
+
+      <!-- SCOPE -->
+      <tr class="r-sco">
+        <th class="disc"><span class="dn">Scope</span><span class="dl">02</span></th>
+        <td class="empty"></td>
+        <td>
+          <div class="proc"><span class="code">2.1</span><span class="name">Plan Scope Management</span></div>
+          <div class="proc"><span class="code">2.2</span><span class="name">Elicit and Analyze Requirements</span></div>
+          <div class="proc"><span class="code">2.3</span><span class="name">Define Scope</span></div>
+          <div class="proc"><span class="code">2.4</span><span class="name">Develop Scope Structure</span></div>
+        </td>
+        <td class="empty"></td>
+        <td>
+          <div class="proc"><span class="code">2.5</span><span class="name">Monitor and Control Scope</span></div>
+          <div class="proc"><span class="code">2.6</span><span class="name">Validate Scope</span></div>
+        </td>
+        <td class="empty"></td>
+      </tr>
+
+      <!-- SCHEDULE -->
+      <tr class="r-sch">
+        <th class="disc"><span class="dn">Schedule</span><span class="dl">03</span></th>
+        <td class="empty"></td>
+        <td>
+          <div class="proc"><span class="code">3.1</span><span class="name">Plan Schedule Management</span></div>
+          <div class="proc"><span class="code">3.2</span><span class="name">Develop Schedule</span></div>
+        </td>
+        <td class="empty"></td>
+        <td><div class="proc"><span class="code">3.3</span><span class="name">Monitor and Control Schedule</span></div></td>
+        <td class="empty"></td>
+      </tr>
+
+      <!-- FINANCE -->
+      <tr class="r-fin">
+        <th class="disc"><span class="dn">Finance</span><span class="dl">04</span></th>
+        <td class="empty"></td>
+        <td>
+          <div class="proc"><span class="code">4.1</span><span class="name">Plan Financial Management</span></div>
+          <div class="proc"><span class="code">4.2</span><span class="name">Estimate Costs</span></div>
+          <div class="proc"><span class="code">4.3</span><span class="name">Develop Budget</span></div>
+        </td>
+        <td class="empty"></td>
+        <td><div class="proc"><span class="code">4.4</span><span class="name">Monitor and Control Finances</span></div></td>
+        <td class="empty"></td>
+      </tr>
+
+      <!-- STAKEHOLDERS -->
+      <tr class="r-stk">
+        <th class="disc"><span class="dn">Stakeholders</span><span class="dl">05</span></th>
+        <td><div class="proc"><span class="code">5.1</span><span class="name">Identify Stakeholders</span></div></td>
+        <td>
+          <div class="proc"><span class="code">5.2</span><span class="name">Plan Stakeholder Engagement</span></div>
+          <div class="proc"><span class="code">5.3</span><span class="name">Plan Communications Management</span></div>
+        </td>
+        <td>
+          <div class="proc"><span class="code">5.4</span><span class="name">Manage Stakeholder Engagement</span></div>
+          <div class="proc"><span class="code">5.5</span><span class="name">Manage Communications</span></div>
+        </td>
+        <td>
+          <div class="proc"><span class="code">5.6</span><span class="name">Monitor Stakeholder Engagement</span></div>
+          <div class="proc"><span class="code">5.7</span><span class="name">Monitor Communications</span></div>
+        </td>
+        <td class="empty"></td>
+      </tr>
+
+      <!-- RESOURCES -->
+      <tr class="r-res">
+        <th class="disc"><span class="dn">Resources</span><span class="dl">06</span></th>
+        <td class="empty"></td>
+        <td>
+          <div class="proc"><span class="code">6.1</span><span class="name">Plan Resource Management</span></div>
+          <div class="proc"><span class="code">6.2</span><span class="name">Estimate Resources</span></div>
+        </td>
+        <td>
+          <div class="proc"><span class="code">6.3</span><span class="name">Acquire Resources</span></div>
+          <div class="proc"><span class="code">6.4</span><span class="name">Lead the Team</span></div>
+        </td>
+        <td><div class="proc"><span class="code">6.5</span><span class="name">Monitor and Control Resourcing</span></div></td>
+        <td class="empty"></td>
+      </tr>
+
+      <!-- RISK -->
+      <tr class="r-rsk">
+        <th class="disc"><span class="dn">Risk</span><span class="dl">07</span></th>
+        <td class="empty"></td>
+        <td>
+          <div class="proc"><span class="code">7.1</span><span class="name">Plan Risk Management</span></div>
+          <div class="proc"><span class="code">7.2</span><span class="name">Identify Risks</span></div>
+          <div class="proc"><span class="code">7.3</span><span class="name">Perform Risk Analysis</span></div>
+          <div class="proc"><span class="code">7.4</span><span class="name">Plan Risk Responses</span></div>
+        </td>
+        <td><div class="proc"><span class="code">7.5</span><span class="name">Implement Risk Responses</span></div></td>
+        <td><div class="proc"><span class="code">7.6</span><span class="name">Monitor Risks</span></div></td>
+        <td class="empty"></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="guide">
+    <div class="card">
+      <h2><span class="num">A</span>Cách đọc số hiệu — cơ chế cốt lõi</h2>
+      <p>Mỗi quy trình có mã <span class="kbd">X.Y</span> mã hoá đúng 2 chiều:</p>
+      <ul>
+        <li><b>Số đầu (X)</b> = lĩnh vực / "làn bơi" → cũng chính là màu. 1 Governance, 2 Scope, 3 Schedule, 4 Finance, 5 Stakeholders, 6 Resources, 7 Risk.</li>
+        <li><b>Số sau (Y)</b> = thứ tự theo vòng đời trong lĩnh vực đó.</li>
+      </ul>
+      <p>Nắm được điều này thì bạn không "học thuộc 40 ô" nữa — bạn đọc một tấm bản đồ 2 chiều: <b>lĩnh vực nào</b> (hàng) làm việc gì ở <b>giai đoạn nào</b> (cột).</p>
+    </div>
+
+    <div class="card">
+      <h2><span class="num">B</span>Động từ cho biết ngay nhóm quy trình</h2>
+      <div class="verb-row"><span class="g">Initiating</span><span class="v">Initiate…, Identify…</span></div>
+      <div class="verb-row"><span class="g">Planning</span><span class="v">Plan…, Define…, Develop…, Estimate…, Elicit…</span></div>
+      <div class="verb-row"><span class="g">Executing</span><span class="v">Manage…, Acquire…, Lead…, Implement…</span></div>
+      <div class="verb-row"><span class="g">M &amp; C</span><span class="v">Monitor…, Control…, Validate…, Assess…</span></div>
+      <div class="verb-row"><span class="g">Closing</span><span class="v">Close…</span></div>
+      <p style="margin-top:10px">Thấy tên quy trình lạ trong đề? Nhìn <b>động từ</b> là đoán được nó thuộc nhóm nào — gần như không bao giờ sai.</p>
+    </div>
+
+    <div class="card">
+      <h2><span class="num">C</span>Bốn quy luật của "hình dạng" ma trận</h2>
+      <ul>
+        <li>Mỗi lĩnh vực đều có một quy trình <b>Plan…</b> ở cột Planning — luôn lập kế hoạch trước.</li>
+        <li>Hầu hết lĩnh vực có một <b>Monitor/Control…</b> ở cột M&amp;C — cái gì lập ra thì phải theo dõi.</li>
+        <li>Chỉ <b>2 quy trình</b> ở Initiating (1.1 và 5.1): khởi động = ra Charter + tìm stakeholder. Chỉ <b>1 quy trình</b> ở Closing (1.9).</li>
+        <li><b>Governance</b> là lĩnh vực duy nhất trải khắp cả 5 cột — vì nó là chất keo tích hợp mọi thứ.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2><span class="num">D</span>Tự kiểm tra bằng chính bảng này</h2>
+      <ul>
+        <li>Che cột tên, chỉ để lại mã → đọc tên từng quy trình.</li>
+        <li>Che toàn bộ ô → điền lại: lĩnh vực này có mấy quy trình, ở cột nào?</li>
+        <li>Chọn 1 quy trình → nói nó <i>sinh ra gì</i> và <i>cái gì tiêu thụ đầu ra đó</i> (dòng chảy outputs→inputs).</li>
+        <li>Giải thích vì sao Scope/Schedule/Finance/Resources <b>không</b> có ô Initiating hay Closing.</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer class="foot">
+    Dữ liệu 40 quy trình lấy từ sơ đồ "PMBOK® Guide 8th Edition Processes Flow" — Adaptation: Ricardo Viana Vargas. PMBOK là nhãn hiệu của Project Management Institute (PMI). Bảng này là công cụ học lại cấu trúc, không thay thế việc đọc Guide gốc để nắm Inputs/Tools &amp; Techniques/Outputs của từng quy trình.
+  </footer>
+
+</div>
+</body>
+</html>
