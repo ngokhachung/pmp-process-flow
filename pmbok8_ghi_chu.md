@@ -66,6 +66,7 @@ Predictive ~40% · Adaptive/agile + hybrid ~60% · 180 câu (170 tính điểm) 
 - Vì sao chỉ có 1 quy trình ở Closing:
 - Vì sao Governance trải khắp 5 cột còn các lĩnh vực khác thì không:
 - Vì sao Scope/Schedule/Finance/Resources không có ô Initiating lẫn Closing:
+- Có bao nhiêu Principle? => 6 principle in 3 group. value - driven ( focus on value, embed sustainability), proactive ( holistic view, quality), ownership ( be an accountable leader, empowerment)
 
 **Quy luật động từ → nhóm quy trình** *(viết lại bằng trí nhớ, rồi đối chiếu)*
 
@@ -326,6 +327,8 @@ Predictive ~40% · Adaptive/agile + hybrid ~60% · 180 câu (170 tính điểm) 
 | Ngày | Nguồn / câu số | Domain·Task | Tôi chọn | Đúng là | Loại lỗi | Bài học rút ra (1 câu) |
 |---|---|---|---|---|---|---|
 | *vd 12/08* | *Study Hall #47* | *III·5* | *Báo sponsor* | *Họp team phân tích rủi ro* | *MINDSET* | *PM tự xử trước khi leo thang, trừ khi vượt thẩm quyền* |
+| 09/08 | Case Study I – Q1 (CRM $12M) | III·1 | Đổi baseline theo lịch họp của steering committee | Đề xuất committee ủy quyền phê duyệt cho một số loại quyết định | MINDSET | Governance tắc thì chỉnh cơ chế ra quyết định (5.4 → 1.2), không đổi baseline để hợp thức hóa chậm trễ |
+| 09/08 | Case Study I – Q2 (CRM $12M) | III·1 · I·5 | Bổ nhiệm governance compliance officer giám sát team | Align committee sớm về tailoring & mức tự quản cho workstream adaptive | MINDSET | Tailoring phải chốt với governing body ngay từ 1.2; thêm người giám sát là tăng ma sát, không phải giải pháp |
 |  |  |  |  |  |  |  |
 |  |  |  |  |  |  |  |
 |  |  |  |  |  |  |  |
@@ -398,9 +401,156 @@ Khởi động sẵn vài nguyên tắc — hãy viết lại bằng lời mình
 | 5 | Phục vụ và gỡ rào cản cho team, không ra lệnh |  |  |
 | 6 | Không bỏ qua quy trình đã thống nhất, kể cả khi gấp |  |  |
 | 7 | Không đổ lỗi cá nhân — xử lý hệ thống |  |  |
-| 8 |  |  |  |
-| 9 |  |  |  |
-| 10 |  |  |  |
+| 8 | Empowerment — trao quyền tự chủ cho team, không siết thêm khi có va chạm |  | Case Study I – Q2 |
+| 9 | Không thêm người/tầng giám sát để giải quyết vấn đề tổ chức — gỡ ma sát, đừng tăng ma sát |  | Case Study I – Q2 |
+| 10 | Governance & tailoring phải được thống nhất **trước**, không xin phép giữa chừng |  | Case Study I – Q1 + Q2 |
+| 11 |  |  |  |
+| 12 |  |  |  |
+
+---
+
+### Phụ lục 3A · Bảng tra mindset — dùng khi cày đề
+
+> Bảng này để **tra**, không để học thuộc. Khi một câu sai vì mindset, tìm nguyên tắc tương ứng ở đây rồi **chép nó lên bảng 12 dòng phía trên bằng lời của bạn** — chỉ khi đó nó mới thành trí nhớ.
+
+**Gốc rễ — 6 nguyên tắc PMBOK 8**
+
+| Nhóm | Nguyên tắc | Mindset sinh ra |
+|---|---|---|
+| Value-driven | Focus on value · Embed sustainability | Mọi quyết định quy về giá trị kinh doanh, không phải "làm đúng kế hoạch" |
+| Proactive | Holistic view · Quality | Chủ động, nhìn toàn cảnh, phòng ngừa hơn sửa chữa |
+| Ownership | Be an accountable leader · Empowerment | PM chịu trách nhiệm, phục vụ team, trao quyền |
+
+> Bí một câu → hỏi: *đáp án nào phục vụ giá trị, chủ động nhất, trao quyền nhiều nhất?*
+
+**⭐ Thang bậc hành động — quan trọng nhất khi thi**
+
+Đáp án đúng thường là **bậc thấp nhất chưa được thử**:
+
+```
+1. Hiểu vấn đề     → thu thập dữ liệu, phân tích, tìm nguyên nhân gốc
+2. Nói với người   → nói chuyện trực tiếp với cá nhân liên quan
+3. Đưa ra team     → họp team, cùng phân tích, cùng tìm giải pháp
+4. Dùng quy trình  → issue log, risk register, change control
+5. Leo thang       → sponsor / steering committee — CHỈ khi vượt thẩm quyền
+```
+
+**A · PM là ai**
+
+1. PM là servant leader — việc chính là gỡ rào cản, không phải kiểm soát.
+2. PM luôn có thẩm quyền hơn bạn nghĩ — hỏi "việc này có trong quyền tôi không?" trước khi leo thang.
+3. PM chịu trách nhiệm về kết quả, kể cả khi lỗi do người khác.
+4. PM chủ động, không chờ được giao.
+5. PM là người kết nối, không phải nút thắt.
+6. PM không làm thay việc kỹ thuật của team.
+
+**B · Thứ tự hành động**
+
+7. Hiểu trước, hành động sau — không chọn giải pháp khi chưa rõ nguyên nhân gốc.
+8. Dữ liệu trước, kết luận sau.
+9. Nói trực tiếp trước khi leo thang.
+10. Leo thang là bậc gần cuối, không phải phản xạ đầu.
+11. Nhưng đừng giấu — vượt thẩm quyền mà tự xử cũng sai như leo thang quá sớm.
+
+**C · Con người & xung đột**
+
+12. Xung đột là bình thường — không né, không dập, xử lý.
+13. Collaborate / problem-solve là mặc định.
+14. Xử lý hệ thống, không xử lý cá nhân.
+15. Ghi nhận công khai, góp ý riêng tư.
+16. Không thay người/sa thải làm giải pháp đầu — huấn luyện, kèm cặp trước.
+17. Team tự tổ chức thì để họ tự quyết cách làm việc của họ.
+18. Đầu tư vào team (training, mentoring) hầu như luôn là đáp án tốt.
+
+**D · Quy trình, thay đổi & governance** ← *chỗ tôi hay sai*
+
+19. Không bỏ qua quy trình đã thống nhất, kể cả khi gấp.
+20. Mọi thay đổi baseline phải qua change control.
+21. Nhưng change control phải được tailoring — không phải mọi điều chỉnh nhỏ đều là change request.
+22. Không tự ý đổi scope; không gold plating, không scope creep.
+23. Đánh giá tác động trước khi phê duyệt.
+24. Governance có thể tailoring — nhưng **cùng** governing body, không đi vòng, không đầu hàng.
+25. Đổi baseline là bước cuối, sau khi đã thử gỡ vấn đề.
+26. Lessons learned ghi liên tục, không đợi lúc đóng dự án.
+
+**E · Stakeholder & giao tiếp**
+
+27. Xác định stakeholder sớm và liên tục — danh sách không đóng băng sau initiating.
+28. Engage sớm, engage chủ động.
+29. Kỳ vọng phải align **trước**, không giải thích sau khi va chạm.
+30. Giao tiếp theo nhu cầu người nhận.
+31. Minh bạch tin xấu — che giấu luôn sai.
+32. Stakeholder chống đối → tìm hiểu vì sao, không phớt lờ, không nhượng bộ vô điều kiện.
+
+**F · Rủi ro & vấn đề**
+
+33. Quản lý rủi ro chủ động, suốt vòng đời.
+34. Risk = chưa xảy ra → risk register. Issue = đã xảy ra → issue log.
+35. Rủi ro mới → đưa vào register và phân tích, không bỏ qua vì "nhỏ".
+36. Opportunity cũng phải có response plan.
+37. Contingency reserve chỉ cho rủi ro đã xác định; ngoài ra là management reserve.
+
+**G · Agile / Hybrid**
+
+38. Chọn cách làm theo bối cảnh, không theo sở thích.
+39. Tailoring là bắt buộc — nhưng phải thống nhất từ đầu.
+40. Product Owner quyết thứ tự ưu tiên — không phải PM, không phải sponsor.
+41. Không nhét việc vào sprint đang chạy → đưa vào backlog sprint sau.
+42. Team ước lượng, không ai ước lượng thay team.
+43. Ưu tiên theo giá trị; thất bại sớm, học nhanh.
+44. Vấn đề của team → đưa ra retrospective, đừng PM tự sửa một mình.
+
+**H · Business environment & giá trị**
+
+45. Giá trị kinh doanh cao hơn việc hoàn thành scope.
+46. Bám business case — business case không còn đúng thì xem lại dự án, kể cả dừng.
+47. Tuân thủ pháp lý/quy định là không thương lượng.
+48. Thay đổi môi trường bên ngoài phải được đánh giá tác động.
+49. Benefit không kết thúc khi dự án đóng — bàn giao có kế hoạch nhận benefit.
+
+**I · Đạo đức (PMI Code of Ethics)**
+
+50. Trung thực tuyệt đối — không báo cáo sai, không làm đẹp số liệu.
+51. Không nhận/đưa quà gây xung đột lợi ích; nghi ngờ thì công khai.
+52. Tôn trọng luật và văn hóa địa phương.
+53. Phát hiện gian lận → báo cáo theo kênh chính thức, không tự xử, không im lặng.
+
+**⭐ Đáp án gần như LUÔN SAI**
+
+| Dạng đáp án | Vì sao sai |
+|---|---|
+| Leo thang lên sponsor **ngay lập tức** | PM chưa dùng hết thẩm quyền |
+| **Thêm người giám sát** / lập thêm ban / thuê compliance officer | Tăng ma sát thay vì gỡ |
+| **Bỏ qua quy trình** vì gấp | Không có ngoại lệ vì deadline |
+| **Tự quyết** việc vượt thẩm quyền | Vi phạm governance |
+| **Phớt lờ** / chờ xem sao | Bị động |
+| **Thay người / sa thải** ngay | Chưa thử huấn luyện |
+| **Đổi baseline** khi chưa gỡ vấn đề gốc | Hợp thức hóa thất bại |
+| **Tăng nguồn lực / crash** làm phản xạ đầu | Chưa phân tích nguyên nhân |
+| **Trách một cá nhân** | Xử lý hệ thống, không xử lý người |
+| **Nhượng bộ khách hàng** ngoài scope | Scope creep |
+| **Làm hơn yêu cầu** cho khách hài lòng | Gold plating |
+| Đáp án chứa **"always" / "never" / "immediately"** | Tuyệt đối hóa thường sai |
+| **Bỏ hẳn** một cách làm để né xung đột | Đầu hàng thay vì tailoring |
+
+**Đáp án gần như LUÔN ĐÚNG**
+
+| Dạng đáp án | Vì sao đúng |
+|---|---|
+| Phân tích nguyên nhân gốc / thu thập dữ liệu trước | Hiểu trước, làm sau |
+| Nói chuyện với đúng người liên quan | Giao tiếp trực tiếp |
+| Đưa vào issue log / risk register rồi phân tích | Dùng công cụ có sẵn |
+| Đánh giá tác động rồi qua change control | Đúng quy trình |
+| Align kỳ vọng với stakeholder **từ sớm** | Chủ động |
+| Tham vấn team, để team tự quyết cách làm | Empowerment |
+| Cập nhật lessons learned | Học liên tục |
+| Tailoring cùng governing body | Linh hoạt trong khuôn khổ |
+
+**Ba câu tự vấn khi phân vân giữa 2 đáp án**
+
+1. *Tôi đã hiểu nguyên nhân gốc chưa?* — Chưa → chọn đáp án tìm hiểu.
+2. *Việc này có trong thẩm quyền tôi không?* — Có → tự xử. Không → leo thang đúng chỗ.
+3. *Đáp án nào chủ động và phục vụ team nhiều hơn?* — Chọn cái đó.
 
 ---
 

@@ -4,7 +4,7 @@ Trong bản dịch, mình giữ lại thuật ngữ tiếng Anh trong ngoặc đ
 
 ---
 
-## MỞ ĐẦU
+## MỞ ĐẦU - Done
 
 **[1]**
 **English:** The PMBOK Guide is one of the most relevant references in project management, and the eighth edition is now out. One thing people struggle with most is understanding the guide, because it's not something you read page by page like a normal book — it's meant to be a reference. What I'll teach you here, as I've done for the past 20 years, is how to translate it into something much simpler and more direct: the process flow. We'll go from scratch, up to a full diagram — and also look at the detailed version with inputs, tools and techniques, and outputs.
@@ -20,7 +20,7 @@ Trong bản dịch, mình giữ lại thuật ngữ tiếng Anh trong ngoặc đ
 
 ---
 
-## HAI CUỐN SÁCH TRONG MỘT
+## HAI CUỐN SÁCH TRONG MỘT - Done
 
 **[4]**
 **English:** In reality, it's two books. The first is the Standard for Project Management, and the second is the PMBOK Guide itself. The Standard is an ANSI (American National Standard) and contains three basic pieces of information: what a project and its context are; how organizations think about and structure themselves for projects; and third, principles. Principles are one of the four concepts that form the spine of what I want to explain.
@@ -28,7 +28,7 @@ Trong bản dịch, mình giữ lại thuật ngữ tiếng Anh trong ngoặc đ
 
 ---
 
-## NGUYÊN TẮC (PRINCIPLES)
+## NGUYÊN TẮC (PRINCIPLES) - Done
 
 **[5]**
 **English:** The concept of principles was introduced in the seventh edition. Now the PMBOK has compiled six principles. If you look at the diagram — which you can download for free, in both a detailed and a simplified version — the frame of our big "diamond" is the set of principles. The eighth edition has six principles, divided into three groups.
@@ -68,7 +68,7 @@ Trong bản dịch, mình giữ lại thuật ngữ tiếng Anh trong ngoặc đ
 
 ---
 
-## VÙNG TRỌNG TÂM (FOCUS AREAS)
+## VÙNG TRỌNG TÂM (FOCUS AREAS) - Done
 
 **[14]**
 **English:** That's the set of principles — the first of the four items. The other three live in the second book, the PMBOK Guide. The second item is Focus Areas, which are the former Process Groups: initiation, planning, executing, monitoring and controlling, and closing. Why did PMI change the name? Because the PMBOK now aims not to be only a predictive approach.
@@ -84,7 +84,7 @@ Trong bản dịch, mình giữ lại thuật ngữ tiếng Anh trong ngoặc đ
 
 ---
 
-## LĨNH VỰC HIỆU SUẤT (PERFORMANCE DOMAINS)
+## LĨNH VỰC HIỆU SUẤT (PERFORMANCE DOMAINS) - Done
 
 **[17]**
 **English:** The third item is the set of Performance Domains, which used to be called Knowledge Areas. Up to the sixth edition there were ten: integration, scope, schedule, cost, quality, resources, communication, risk, procurement, and stakeholders. PMI streamlined these into seven performance domains: governance, scope, schedule, finance, stakeholders, resources, and risks.
@@ -104,19 +104,19 @@ Trong bản dịch, mình giữ lại thuật ngữ tiếng Anh trong ngoặc đ
 
 ---
 
-## QUY TRÌNH ĐÃ TRỞ LẠI (chuyển sang Phần 2)
+## QUY TRÌNH ĐÃ TRỞ LẠI (chuyển sang Phần 2) - Done
 
 **[21]**
 **English:** In the seventh edition there was a strong focus on the outer elements and some performance domains — but now the processes are back, with inputs, tools and techniques, and outputs, totaling 40 processes. For me, these 40 processes are the DNA of how we manage projects, and that's what we'll walk through — not page 1, 2, 3, but jumping around: page 100, 90, 60, 200, 10. That's why my PMBOK is full of flags: it's a reference, a codex, not a book you read cover to cover.
 **VN:** Ở ấn bản 7, trọng tâm dồn nhiều vào các thành phần bên ngoài và một số lĩnh vực hiệu suất — nhưng nay các quy trình (processes) đã quay lại, với đầu vào, công cụ & kỹ thuật, và đầu ra, tổng cộng 40 quy trình. Với tôi, 40 quy trình này chính là "ADN" của cách chúng ta quản lý dự án, và đó là thứ ta sẽ đi qua — không phải trang 1, 2, 3, mà nhảy cóc: trang 100, 90, 60, 200, 10. Đó là lý do cuốn PMBOK của tôi đầy những cờ đánh dấu: nó là tài liệu tra cứu, một "bộ luật" (codex), chứ không phải cuốn để đọc từ đầu đến cuối.
 
-# PHẦN 2 — KHỞI TẠO & LẬP KẾ HOẠCH
+# PHẦN 2 — KHỞI TẠO & LẬP KẾ HOẠCH - Done
 
 Phần này đi vào các quy trình cụ thể: toàn bộ vùng **Khởi tạo (Initiation)** — nơi thầy giảng rất chi tiết về inputs/tools/outputs — và toàn bộ vùng **Lập kế hoạch (Planning)** (từ ~24:56 đến ~56:19). Phần 3 sẽ là Thực hiện, Giám sát & Kiểm soát, và Kết thúc.
 
 ---
 
-## KHỞI TẠO DỰ ÁN
+## KHỞI TẠO DỰ ÁN - Done
 
 **[22]**
 **English:** So let's start a project. How do we start? By initiation — I initiate a project or a phase. Let me explain the codification: when you see "governance" written in black at the top, it means this process belongs to the governance performance domain and sits inside the initiation focus area. This is the birth of a project — how a project starts.
@@ -164,7 +164,7 @@ Phần này đi vào các quy trình cụ thể: toàn bộ vùng **Khởi tạo
 
 ---
 
-## LẬP KẾ HOẠCH — PHẠM VI (SCOPE)
+## LẬP KẾ HOẠCH — PHẠM VI (SCOPE) - Done
 
 **[33]**
 **English:** I start planning with scope — I need to understand the work I need to do. First I create the scope management plan: the rules of the game for scope. For example, if I want to change aspects of my scope, can I? At what level? Who approves it? All those rules are decided here.
